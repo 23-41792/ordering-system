@@ -1,0 +1,3396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loveat Pasta | Order Online</title>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #a1572f; --secondary: #c07c4e; --accent: #e49b6b; --light: #f8e9d2;
+    --background: #f9f3e8; --text: #4b3f3f; --text-light: #7a5c3c; --success: #4caf50;
+    --warning: #ff9800; --danger: #c07c4e; --white: #ffffff; --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family:"Poppins",sans-serif; background:var(--background); color:var(--text); }
+  header { background:var(--light); padding:15px 25px; border-bottom:2px solid #d7b89a; text-align:center; }
+  .logo-section { display:flex; flex-direction:column; align-items:center; gap:10px; }
+  header img { width:80px; border-radius:50%; }
+  h1 { font-family:"Amatic SC",cursive; color:var(--primary); font-size:2.5rem; margin:0; }
+  .tagline { color:var(--text-light); font-size:0.9rem; margin:5px 0 0 0; }
+  nav { text-align:center; padding:10px; }
+  nav button { background:var(--secondary); color:white; border:none; padding:8px 15px; border-radius:20px; margin:5px; cursor:pointer; transition:all 0.3s ease; }
+  nav button:hover { background:var(--accent); transform:translateY(-2px); }
+  
+  /* LOGIN SECTION */
+  .login-section { 
+    display:flex; 
+    justify-content:center; 
+    align-items:flex-start; 
+    min-height:70vh; 
+    padding:20px; 
+    gap: 40px;
+  }
+  
+  .login-info-container {
+    flex: 1;
+    max-width: 500px;
+    margin-top: 40px;
+  }
+  
+  .login-container { 
+    background:white; 
+    border-radius:20px; 
+    box-shadow:var(--shadow); 
+    padding:40px 30px; 
+    width:100%; 
+    max-width:450px; 
+    text-align:center; 
+    position:relative; 
+    overflow:hidden; 
+  }
+  .login-container::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); }
+  .login-logo { width:100px; height:100px; border-radius:50%; margin:0 auto 20px; display:block; border:4px solid var(--light); box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+  .login-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.8rem; margin:0 0 10px; }
+  .login-subtitle { color:var(--text-light); margin-bottom:30px; font-size:1rem; }
+  .login-form { display:flex; flex-direction:column; gap:20px; }
+  .form-group { text-align:left; position:relative; }
+  .form-label { display:block; margin-bottom:8px; font-weight:600; color:#5a4730; }
+  .form-input { width:100%; padding:14px 16px; border:2px solid #e9e1d3; border-radius:12px; font-size:1rem; transition:all 0.3s ease; }
+  .form-input:focus { outline:none; border-color:var(--secondary); box-shadow:0 0 0 3px rgba(192,124,78,0.2); }
+  .login-btn { background:linear-gradient(135deg, var(--primary), var(--secondary)); color:white; border:none; padding:16px; border-radius:12px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:all 0.3s ease; margin-top:10px; box-shadow:0 4px 15px rgba(161,87,47,0.3); }
+  .login-btn:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(161,87,47,0.4); }
+  .login-btn:active { transform:translateY(-1px); }
+  .login-message { margin-top:20px; padding:12px; border-radius:8px; font-weight:500; }
+  .login-message.success { background:#e8f5e9; color:#2e7d32; border:1px solid #c8e6c9; }
+  .login-message.error { background:#ffebee; color:#c62828; border:1px solid #ffcdd2; }
+  .role-selector { display:flex; justify-content:center; gap:10px; margin-bottom:30px; }
+  .role-btn { background:var(--light); border:2px solid transparent; padding:10px 20px; border-radius:50px; cursor:pointer; transition:all 0.3s ease; font-weight:600; color:var(--text-light); }
+  .role-btn.active { background:var(--secondary); color:white; border-color:var(--primary); }
+  .role-btn:hover:not(.active) { background:#e9d5b8; }
+  
+  /* CREATE ACCOUNT SECTION */
+  .create-account-section { display:none; }
+  .create-account-container { background:white; border-radius:20px; box-shadow:var(--shadow); padding:40px 30px; width:100%; max-width:450px; text-align:center; position:relative; overflow:hidden; }
+  .create-account-container::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); }
+  .create-account-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.5rem; margin:0 0 10px; }
+  .create-account-subtitle { color:var(--text-light); margin-bottom:30px; font-size:1rem; }
+  .create-account-form { display:flex; flex-direction:column; gap:20px; }
+  .create-account-btn { background:linear-gradient(135deg, var(--primary), var(--secondary)); color:white; border:none; padding:16px; border-radius:12px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:all 0.3s ease; margin-top:10px; box-shadow:0 4px 15px rgba(161,87,47,0.3); }
+  .create-account-btn:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(161,87,47,0.4); }
+  
+  /* FORGOT PASSWORD SECTION - UPDATED */
+  .forgot-password-section { display:none; }
+  .forgot-password-container { background:white; border-radius:20px; box-shadow:var(--shadow); padding:40px 30px; width:100%; max-width:450px; text-align:center; position:relative; overflow:hidden; }
+  .forgot-password-container::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); }
+  .forgot-password-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.5rem; margin:0 0 10px; }
+  .forgot-password-subtitle { color:var(--text-light); margin-bottom:30px; font-size:1rem; }
+  .forgot-password-form { display:flex; flex-direction:column; gap:20px; }
+  .forgot-password-btn { background:linear-gradient(135deg, var(--primary), var(--secondary)); color:white; border:none; padding:16px; border-radius:12px; font-size:1.1rem; font-weight:600; cursor:pointer; transition:all 0.3s ease; margin-top:10px; box-shadow:0 4px 15px rgba(161,87,47,0.3); }
+  .forgot-password-btn:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(161,87,47,0.4); }
+  
+  /* CREATE ACCOUNT LINK */
+  .login-options { display:flex; justify-content:space-between; align-items:center; margin:15px 0; }
+  .create-account-link { color:var(--primary); text-decoration:none; font-weight:600; font-size:0.9rem; cursor:pointer; transition:all 0.3s ease; }
+  .create-account-link:hover { color:var(--secondary); text-decoration:underline; }
+  .forgot-password-link { color:var(--primary); text-decoration:none; font-weight:600; font-size:0.9rem; cursor:pointer; transition:all 0.3s ease; }
+  .forgot-password-link:hover { color:var(--secondary); text-decoration:underline; }
+  .back-to-login { color:var(--primary); text-decoration:none; font-weight:600; font-size:0.9rem; cursor:pointer; transition:all 0.3s ease; margin-top:15px; display:inline-block; }
+  .back-to-login:hover { color:var(--secondary); text-decoration:underline; }
+  
+  /* Password visibility toggle */
+  .password-container { position:relative; }
+  .toggle-password { position:absolute; right:15px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text-light); cursor:pointer; }
+  
+  /* Autocomplete styling */
+  .form-input::-webkit-calendar-picker-indicator { display: none !important; }
+  input[list] {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23a1572f" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+  
+  /* Password validation styling */
+  .password-strength { margin-top: 5px; font-size: 0.8rem; }
+  .password-strength.weak { color: #f44336; }
+  .password-strength.medium { color: #ff9800; }
+  .password-strength.strong { color: #4caf50; }
+  
+  /* Phone number validation styling */
+  .phone-validation { margin-top: 5px; font-size: 0.8rem; }
+  .phone-validation.valid { color: #4caf50; }
+  .phone-validation.invalid { color: #f44336; }
+  
+  /* DASHBOARD STYLES */
+  .dashboard { max-width:1200px; margin:0 auto; padding:20px; }
+  .dashboard-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; padding-bottom:15px; border-bottom:2px solid var(--light); }
+  .dashboard-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:3rem; margin:0; }
+  .user-info { display:flex; align-items:center; gap:10px; }
+  .user-avatar { width:40px; height:40px; border-radius:50%; background:var(--secondary); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; }
+  .logout-btn { background:var(--danger); color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer; transition:all 0.3s ease; display:flex; align-items:center; gap:8px; }
+  .logout-btn:hover { background:#c07c4e; transform:translateY(-2px); }
+  
+  /* ABOUT US SECTION - MOVED TO LOGIN PAGE */
+  .about-us-section { 
+    background:white; 
+    border-radius:15px; 
+    padding:25px; 
+    box-shadow:var(--shadow); 
+    margin-top:30px; 
+  }
+  .about-us-section h3 { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.2rem; margin:0 0 20px; }
+  .mission-vision { margin-bottom:30px; }
+  .mission-vision h4 { color:var(--primary); margin-bottom:10px; font-size:1.2rem; }
+  .mission-vision p { margin-bottom:15px; line-height:1.6; }
+  .step-guide { margin-top:20px; }
+  .step-guide h4 { color:var(--primary); margin-bottom:15px; font-size:1.2rem; }
+  .step-list { list-style-type:none; padding-left:0; }
+  .step-item { display:flex; align-items:flex-start; margin-bottom:15px; padding:15px; background:var(--light); border-radius:10px; }
+  .step-number { background:var(--primary); color:white; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-right:15px; flex-shrink:0; font-weight:bold; }
+  .step-content { flex:1; }
+  .step-content h5 { margin:0 0 8px; color:var(--primary); font-size:1.1rem; }
+  .step-content p { margin:0; color:var(--text); line-height:1.5; }
+  
+  /* Customer Account Management - UPDATED */
+  .account-management { background:white; border-radius:15px; padding:25px; box-shadow:var(--shadow); margin-top:30px; margin-bottom: 30px; }
+  .account-management h3 { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.2rem; margin:0 0 20px; }
+  .account-actions { display:flex; gap:15px; flex-wrap:wrap; }
+  .account-btn { background:var(--secondary); color:white; border:none; padding:12px 20px; border-radius:10px; cursor:pointer; transition:all 0.3s ease; font-weight:500; display:flex; align-items:center; gap:8px; flex-direction: column; text-align: center; min-height: 80px; justify-content: center; }
+  .account-btn:hover { background:var(--accent); transform:translateY(-2px); }
+  .account-btn.delete { background:var(--danger); }
+  .account-btn.delete:hover { background:#d32f2f; }
+  .account-btn-description { font-size: 0.75rem; margin-top: 5px; opacity: 0.9; font-weight: normal; }
+  
+  .dashboard-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-bottom:30px; }
+  .dashboard-card { background:var(--white); border-radius:15px; padding:25px; box-shadow:var(--shadow); text-align:left; }
+  .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:15px; border-bottom:1px solid #eee; }
+  .card-title { font-size:1.5rem; color:var(--primary); margin:0; display:flex; align-items:center; gap:10px; }
+  
+  /* MENU STYLES */
+  .menu-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:20px; margin-top:20px; }
+  .menu-card { background:var(--white); border-radius:12px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,0.08); transition:all 0.3s ease; }
+  .menu-card:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+  .menu-card img { width:100%; height:140px; object-fit:cover; }
+  .menu-card-content { padding:15px; }
+  .menu-card h3 { color:var(--primary); margin:0 0 8px; font-size:1.1rem; }
+  .menu-card p { color:var(--text-light); margin:0 0 12px; font-size:0.9rem; }
+  .menu-card .price { font-weight:bold; color:var(--secondary); font-size:1.1rem; }
+  .add-to-cart-btn { background:var(--secondary); color:white; border:none; padding:8px 15px; border-radius:20px; cursor:pointer; transition:all 0.3s ease; width:100%; font-weight:600; }
+  .add-to-cart-btn:hover { background:var(--accent); }
+  
+  /* CART STYLES */
+  .cart-items { max-height:300px; overflow-y:auto; margin-bottom:20px; }
+  .cart-item { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid #eee; }
+  .cart-item:last-child { border-bottom:none; }
+  .cart-total { font-weight:bold; margin-top:15px; padding-top:15px; border-top:2px solid var(--light); font-size:1.2rem; color:var(--primary); }
+  .checkout-btn { background:var(--primary); color:white; border:none; padding:12px 25px; border-radius:25px; cursor:pointer; transition:all 0.3s ease; font-size:1.1rem; font-weight:600; width:100%; margin-top:15px; display:flex; align-items:center; justify-content:center; gap:10px; }
+  .checkout-btn:hover { background:var(--secondary); transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,0.15); }
+  
+  /* CART QUANTITY CONTROLS */
+  .quantity-controls { display:flex; align-items:center; gap:10px; }
+  .quantity-btn { background:var(--light); border:none; width:30px; height:30px; border-radius:50%; cursor:pointer; transition:all 0.3s ease; display:flex; align-items:center; justify-content:center; }
+  .quantity-btn:hover { background:#e9d5b8; }
+  .quantity-display { font-weight:600; min-width:20px; text-align:center; }
+  .delete-btn { background:var(--danger); color:white; border:none; padding:5px 10px; border-radius:6px; cursor:pointer; transition:all 0.3s ease; font-size:0.8rem; margin-left:10px; }
+  .delete-btn:hover { background:#d32f2f; }
+  
+  /* ORDER TRACKING */
+  .tracking-container { margin-top:30px; }
+  .order-card { background:white; border-radius:12px; padding:20px; margin:15px 0; box-shadow:0 3px 10px rgba(0,0,0,0.08); text-align:left; position: relative; }
+  .order-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid #eee; }
+  .order-id { font-weight:bold; color:var(--primary); font-size:1.1rem; }
+  .order-date { color:#777; font-size:0.9rem; }
+  .order-items { margin:15px 0; }
+  .order-item { display:flex; justify-content:space-between; margin:8px 0; padding:5px 0; }
+  .order-total { font-weight:bold; font-size:1.1rem; color:var(--primary); margin-top:10px; padding-top:10px; border-top:1px solid #eee; }
+  
+  /* STATUS BAR */
+  .status-container { margin:20px 0; }
+  .status-bar { display:flex; justify-content:space-between; position:relative; margin:20px 0; }
+  .status-bar::before { content:''; position:absolute; top:15px; left:0; right:0; height:4px; background:#ddd; z-index:1; }
+  .status-progress { position:absolute; top:15px; left:0; height:4px; background:var(--primary); z-index:2; transition:width 0.5s ease; }
+  .status-step { display:flex; flex-direction:column; align-items:center; z-index:3; }
+  .status-dot { width:30px; height:30px; border-radius:50%; background:#ddd; display:flex; align-items:center; justify-content:center; margin-bottom:5px; font-size:0.8rem; }
+  .status-dot.active { background:var(--primary); color:white; }
+  .status-label { font-size:0.8rem; color:#777; font-weight:500; }
+  .status-label.active { color:var(--primary); font-weight:bold; }
+  
+  /* CANCEL ORDER BUTTON */
+  .cancel-order-btn { background:var(--danger); color:white; border:none; padding:8px 15px; border-radius:20px; cursor:pointer; transition:all 0.3s ease; font-weight:500; margin-top:10px; }
+  .cancel-order-btn:hover { background:#c07c4e; }
+  
+  /* DELETE ORDER BUTTON */
+  .delete-order-btn { background:var(--danger); color:white; border:none; padding:8px 15px; border-radius:20px; cursor:pointer; transition:all 0.3s ease; font-weight:500; margin-top:10px; margin-left: 10px; }
+  .delete-order-btn:hover { background:#d32f2f; }
+  
+  /* SEARCH AND FILTER */
+  .search-container { margin:20px 0; display:flex; flex-direction:column; align-items:center; gap:15px; }
+  .search-box { padding:12px 20px; border-radius:25px; border:2px solid #e9e1d3; width:100%; max-width:400px; font-size:1rem; transition:all 0.3s ease; }
+  .search-box:focus { outline:none; border-color:var(--secondary); box-shadow:0 0 0 3px rgba(192,124,78,0.2); }
+  .filter-options { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .filter-btn { background:var(--light); border:2px solid transparent; padding:8px 20px; border-radius:20px; cursor:pointer; transition:all 0.3s ease; font-weight:500; }
+  .filter-btn.active { background:var(--secondary); color:white; border-color:var(--primary); }
+  .filter-btn:hover:not(.active) { background:#e9d5b8; }
+  
+  /* ORDER HISTORY */
+  .history-container { margin-top:30px; }
+  .history-list { max-height:400px; overflow-y:auto; margin-top:15px; }
+  
+  /* STAFF DASHBOARD */
+  .staff-dashboard { max-width:1200px; margin:0 auto; padding:20px; }
+  .orders-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(350px, 1fr)); gap:25px; margin-top:20px; }
+  .order-panel { background:white; border-radius:12px; padding:20px; box-shadow:var(--shadow); text-align:left; border-left:5px solid var(--warning); transition:all 0.3s ease; }
+  .order-panel.ready { border-left-color:var(--success); }
+  .order-panel.ontheway { border-left-color:var(--accent); }
+  .order-panel.delivered { border-left-color:var(--primary); }
+  .order-panel.cancelled { border-left-color:var(--danger); opacity:0.7; }
+  .order-panel-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid #eee; }
+  .order-panel-id { font-weight:bold; color:var(--primary); font-size:1.1rem; }
+  .order-time { color:#777; font-size:0.9rem; display:flex; align-items:center; gap:5px; }
+  .order-items-list { margin:15px 0; }
+  .order-item-row { display:flex; justify-content:space-between; margin:8px 0; padding:5px 0; }
+  .order-actions { margin-top:15px; display:flex; gap:10px; }
+  .status-select { flex:1; padding:10px; border-radius:8px; border:2px solid #e9e1d3; background:white; font-weight:500; }
+  .update-btn { background:var(--secondary); color:white; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; transition:all 0.3s ease; font-weight:500; }
+  .update-btn:hover { background:var(--accent); }
+  .stats-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:30px; }
+  .stat-card { background:white; border-radius:12px; padding:20px; box-shadow:var(--shadow); text-align:center; }
+  .stat-value { font-size:2.5rem; font-weight:bold; color:var(--primary); margin:10px 0; }
+  .stat-label { color:var(--text-light); font-size:0.9rem; }
+  
+  /* ADMIN DASHBOARD */
+  .admin-dashboard { max-width:1200px; margin:0 auto; padding:20px; }
+  .admin-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:20px; }
+  .admin-section { background:white; border-radius:12px; padding:25px; box-shadow:var(--shadow); text-align:left; }
+  .form-row { display:flex; gap:15px; margin-bottom:20px; }
+  .form-input { flex:1; padding:12px 15px; border:2px solid #e9e1d3; border-radius:8px; font-size:1rem; transition:all 0.3s ease; }
+  .form-input:focus { outline:none; border-color:var(--secondary); }
+  .add-btn { background:var(--success); color:white; border:none; padding:12px 20px; border-radius:8px; cursor:pointer; transition:all 0.3s ease; font-weight:500; display:flex; align-items:center; gap:8px; }
+  .add-btn:hover { background:#45a049; transform:translateY(-2px); }
+  .menu-list { margin-top:20px; max-height:300px; overflow-y:auto; }
+  .menu-item { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid #eee; }
+  .menu-item:last-child { border-bottom:none; }
+  .menu-item-info { display:flex; align-items:center; gap:15px; }
+  .menu-item-img { width:50px; height:50px; border-radius:8px; object-fit:cover; }
+  .menu-item-details h4 { margin:0 0 5px; color:var(--primary); }
+  .menu-item-details p { margin:0; color:var(--text-light); font-size:0.9rem; }
+  .remove-btn { background:var(--danger); color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; transition:all 0.3s ease; font-size:0.9rem; }
+  .remove-btn:hover { background:#d32f2f; }
+  .user-list { margin-top:20px; }
+  .user-item { display:flex; justify-content:space-between; align-items:center; padding:15px 0; border-bottom:1px solid #eee; }
+  .user-item:last-child { border-bottom:none; }
+  .user-info { display:flex; align-items:center; gap:15px; }
+  .user-avatar-small { width:40px; height:40px; border-radius:50%; background:var(--secondary); display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; }
+  .user-details h4 { margin:0 0 5px; color:var(--primary); }
+  .user-details p { margin:0; color:var(--text-light); font-size:0.9rem; }
+  .user-role { background:var(--light); color:var(--text-light); padding:5px 12px; border-radius:20px; font-size:0.8rem; font-weight:500; }
+  
+  /* IMAGE UPLOAD */
+  .image-upload-container { margin-bottom:20px; }
+  .image-preview { width:100px; height:100px; border-radius:8px; object-fit:cover; margin:10px 0; border:2px dashed #ddd; display:none; }
+  .image-preview.active { display:block; }
+  .file-input-label { display:inline-block; background:var(--light); color:var(--text-light); padding:10px 15px; border-radius:8px; cursor:pointer; transition:all 0.3s ease; font-weight:500; margin-top:10px; }
+  .file-input-label:hover { background:#e9d5b8; }
+  .file-input { display:none; }
+  
+  /* EMPTY STATES */
+  .empty-state { text-align:center; padding:40px 20px; color:var(--text-light); }
+  .empty-state i { font-size:3rem; margin-bottom:15px; color:#ddd; }
+  .empty-state p { margin:0; font-size:1.1rem; }
+  
+  /* PAYMENT MODAL */
+  .payment-modal { background:var(--white); border-radius:20px; box-shadow:var(--shadow); padding:30px; width:90%; max-width:500px; text-align:left; position:relative; transform:translateY(20px); transition:all 0.3s ease; }
+  .modal-overlay.active .payment-modal { transform:translateY(0); }
+  .payment-modal::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); border-radius:20px 20px 0 0; }
+  .payment-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.5rem; margin:0 0 20px; text-align:center; }
+  .payment-form { display:flex; flex-direction:column; gap:20px; }
+  .payment-methods { display:flex; gap:15px; margin:10px 0; }
+  .payment-method { flex:1; text-align:center; }
+  .payment-radio { display:none; }
+  .payment-label { display:block; padding:15px; background:var(--light); border-radius:10px; cursor:pointer; transition:all 0.3s ease; border:2px solid transparent; }
+  .payment-radio:checked + .payment-label { background:var(--secondary); color:white; border-color:var(--primary); }
+  .payment-label:hover { background:#e9d5b8; }
+  .payment-label i { font-size:1.5rem; margin-bottom:8px; display:block; }
+  
+  /* PAYMENT DETAILS SECTIONS */
+  .payment-details { display: none; padding: 15px; background: var(--light); border-radius: 10px; margin-top: 10px; }
+  .payment-details.active { display: block; }
+  
+  /* ACCOUNT DETAILS STYLES */
+  .account-details {
+    background: #f0f7ff;
+    border: 1px solid #c5d9f1;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+  }
+  
+  .account-details h4 {
+    margin: 0 0 10px 0;
+    color: var(--primary);
+    font-size: 1rem;
+  }
+  
+  .account-details p {
+    margin: 5px 0;
+    color: var(--text);
+  }
+  
+  /* MODAL */
+  .modal-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); display:flex; justify-content:center; align-items:center; z-index:1000; opacity:0; visibility:hidden; transition:all 0.3s ease; }
+  .modal-overlay.active { opacity:1; visibility:visible; }
+  .confirmation-modal { background:var(--white); border-radius:20px; box-shadow:var(--shadow); padding:30px; width:90%; max-width:450px; text-align:center; position:relative; transform:translateY(20px); transition:all 0.3s ease; }
+  .modal-overlay.active .confirmation-modal { transform:translateY(0); }
+  .confirmation-modal::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); border-radius:20px 20px 0 0; }
+  .confirmation-icon { width:80px; height:80px; border-radius:50%; background:var(--success); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; color:white; font-size:2.5rem; box-shadow:0 4px 10px rgba(76,175,80,0.3); }
+  .confirmation-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.5rem; margin:0 0 15px; }
+  .confirmation-message { color:var(--text); margin-bottom:20px; line-height:1.6; }
+  .order-id-display { background:var(--light); padding:12px 20px; border-radius:10px; margin:20px 0; font-weight:600; color:var(--primary); border:2px dashed var(--secondary); }
+  .confirmation-btn { background:var(--secondary); color:white; border:none; padding:12px 30px; border-radius:25px; cursor:pointer; transition:all 0.3s ease; font-size:1.1rem; font-weight:600; margin-top:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+  .confirmation-btn:hover { background:var(--accent); transform:translateY(-2px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
+  
+  /* CUSTOM CONFIRMATION MODAL */
+  .custom-confirmation-modal { background:var(--white); border-radius:20px; box-shadow:var(--shadow); padding:30px; width:90%; max-width:450px; text-align:center; position:relative; transform:translateY(20px); transition:all 0.3s ease; }
+  .modal-overlay.active .custom-confirmation-modal { transform:translateY(0); }
+  .custom-confirmation-modal::before { content:''; position:absolute; top:0; left:0; right:0; height:8px; background:linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); border-radius:20px 20px 0 0; }
+  .custom-confirmation-icon { width:80px; height:80px; border-radius:50%; background:var(--warning); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; color:white; font-size:2.5rem; box-shadow:0 4px 10px rgba(255,152,0,0.3); }
+  .custom-confirmation-title { font-family:'Amatic SC', cursive; color:var(--primary); font-size:2.5rem; margin:0 0 15px; }
+  .custom-confirmation-message { color:var(--text); margin-bottom:30px; line-height:1.6; }
+  .custom-confirmation-buttons { display:flex; gap:15px; justify-content:center; }
+  .custom-confirmation-btn { padding:12px 25px; border-radius:25px; cursor:pointer; transition:all 0.3s ease; font-size:1.1rem; font-weight:600; border:none; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+  .custom-confirmation-btn:hover { transform:translateY(-2px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
+  .custom-confirmation-btn.ok { background:var(--danger); color:white; }
+  .custom-confirmation-btn.ok:hover { background:#d32f2f; }
+  .custom-confirmation-btn.cancel { background:var(--light); color:var(--text); }
+  .custom-confirmation-btn.cancel:hover { background:#e9d5b8; }
+  
+  /* ENABLED ACCOUNT MESSAGE */
+  .enabled-account-message { 
+    background: #e8f5e9; 
+    color: #2e7d32; 
+    padding: 12px 20px; 
+    border-radius: 8px; 
+    margin: 20px 0; 
+    text-align: center;
+    border: 1px solid #c8e6c9;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* LOADING SPINNER */
+  .loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* NOTIFICATION STYLES */
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    transition: all 0.3s ease;
+    transform: translateX(120%);
+  }
+  
+  .notification.active {
+    transform: translateX(0);
+  }
+  
+  .notification.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #4caf50;
+  }
+  
+  .notification.error {
+    background: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #f44336;
+  }
+  
+  .notification.warning {
+    background: #fff3e0;
+    color: #ef6c00;
+    border-left: 4px solid #ff9800;
+  }
+  
+  .notification.info {
+    background: #e3f2fd;
+    color: #1565c0;
+    border-left: 4px solid #2196f3;
+  }
+  
+  .notification-icon {
+    font-size: 1.2rem;
+  }
+  
+  .notification-content {
+    flex: 1;
+  }
+  
+  .notification-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .notification-message {
+    font-size: 0.9rem;
+  }
+  
+  .notification-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  
+  .notification-close:hover {
+    opacity: 1;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width:768px) {
+    .login-section {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .login-info-container {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+    
+    .dashboard-grid, .admin-grid { grid-template-columns:1fr; }
+    .dashboard-header { flex-direction:column; gap:15px; align-items:flex-start; }
+    .orders-grid { grid-template-columns:1fr; }
+    .form-row { flex-direction:column; }
+    .confirmation-modal, .payment-modal, .custom-confirmation-modal { padding:20px; margin:20px; }
+    .payment-methods { flex-direction:column; }
+    .custom-confirmation-buttons { flex-direction:column; }
+    .account-actions { flex-direction:column; }
+    .notification {
+      top: 10px;
+      right: 10px;
+      left: 10px;
+      max-width: none;
+    }
+  }
+  
+  @keyframes shake {
+    0%,100% { transform:translateX(0); }
+    10%,30%,50%,70%,90% { transform:translateX(-5px); }
+    20%,40%,60%,80% { transform:translateX(5px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NOTIFICATION CONTAINER -->
+<div id="notificationContainer"></div>
+
+<header>
+  <div class="logo-section">
+    <!-- EDITABLE IMAGE LINK -->
+    <img src="image/logo.jpg" alt="Loveat Pasta Logo">
+    <div>
+      <h1>Loveat Pasta</h1>
+      <p class="tagline">Fresh • Fast • Flavorful</p>
+    </div>
+  </div>
+</header>
+
+<nav id="nav">
+  <button onclick="showLogin('Customer')">Customer</button>
+  <button onclick="showLogin('Staff')">Staff</button>
+  <button onclick="showLogin('Admin')">Admin</button>
+</nav>
+
+<!-- LOGIN SECTION -->
+<section id="loginSection" style="display:none;">
+  <div class="login-section">
+    <div class="login-container">
+      <!-- EDITABLE IMAGE LINK -->
+      <img src="image/logo.jpg" alt="Loveat Pasta Logo" class="login-logo">
+      <h2 class="login-title">Welcome Back</h2>
+      <p class="login-subtitle">Login to your account</p>
+      
+      <div class="role-selector">
+        <button class="role-btn active" onclick="selectRole('Customer')">Customer</button>
+        <button class="role-btn" onclick="selectRole('Staff')">Staff</button>
+        <button class="role-btn" onclick="selectRole('Admin')">Admin</button>
+      </div>
+      
+      <div class="login-form">
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+          <input type="text" id="username" class="form-input" placeholder="Enter your username" list="username-datalist" autocomplete="username">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="password-container">
+            <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+            <input type="password" id="password" class="form-input" placeholder="Enter your password" autocomplete="new-password">
+            <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="login-options" id="createAccountLinkContainer">
+          <a class="forgot-password-link" onclick="showForgotPassword()">Forgot Password?</a>
+          <a class="create-account-link" onclick="showCreateAccount()">Create Customer Account</a>
+        </div>
+        
+        <button class="login-btn" onclick="login()" id="loginButton">Login</button>
+      </div>
+      
+      <div id="loginMessage" class="login-message" style="display:none;"></div>
+    </div>
+    
+    <!-- MOVED ABOUT US SECTION TO LOGIN PAGE -->
+    <div class="login-info-container">
+      <div class="about-us-section">
+        <h3>About Us</h3>
+        <div class="mission-vision">
+          <h4>Our Mission</h4>
+          <p>To provide delicious, high-quality pasta dishes that bring joy and satisfaction to every customer, while maintaining the highest standards of food safety and service excellence.</p>
+          
+          <h4>Our Vision</h4>
+          <p>To become the most beloved pasta restaurant in the community, known for our authentic flavors, exceptional service, and commitment to creating memorable dining experiences for all our customers.</p>
+        </div>
+        
+        <div class="step-guide">
+          <h4>How to Order in 4 Easy Steps</h4>
+          <ul class="step-list">
+            <li class="step-item">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h5>Browse Our Menu</h5>
+                <p>Explore our delicious pasta selection and choose your favorites</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h5>Add to Cart</h5>
+                <p>Select your desired items and quantities, then add them to your cart</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h5>Checkout & Pay</h5>
+                <p>Provide your delivery details and complete your payment securely</p>
+              </div>
+            </li>
+            <li class="step-item">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h5>Track Your Order</h5>
+                <p>Monitor your order status in real-time from preparation to delivery</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORGOT PASSWORD SECTION - UPDATED -->
+<section id="forgotPasswordSection" class="forgot-password-section">
+  <div class="login-section">
+    <div class="forgot-password-container">
+      <!-- EDITABLE IMAGE LINK -->
+      <img src="image/logo.jpg" alt="Loveat Pasta Logo" class="login-logo">
+      <h2 class="forgot-password-title">Reset Password</h2>
+      <p class="forgot-password-subtitle">Enter your username and remembered password</p>
+      
+      <div class="forgot-password-form">
+        <!-- ADDED USERNAME FIELD -->
+        <div class="form-group">
+          <label class="form-label" for="forgotUsername">Username</label>
+          <input type="text" id="forgotUsername" class="form-input" placeholder="Enter your username" autocomplete="username">
+        </div>
+
+        <!-- ADDED REMEMBERED PASSWORD FIELD -->
+        <div class="form-group">
+          <label class="form-label" for="rememberedPassword">Remembered Password</label>
+          <div class="password-container">
+            <input type="password" id="rememberedPassword" class="form-input" placeholder="Enter your remembered password" autocomplete="current-password">
+            <button type="button" class="toggle-password" onclick="toggleRememberedPasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="newForgotPassword">New Password</label>
+          <div class="password-container">
+            <input type="password" id="newForgotPassword" class="form-input" placeholder="Enter your new password" oninput="validateForgotPassword()" autocomplete="new-password">
+            <button type="button" class="toggle-password" onclick="toggleNewForgotPasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div id="forgotPasswordStrength" class="password-strength"></div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="confirmForgotPassword">Confirm New Password</label>
+          <div class="password-container">
+            <input type="password" id="confirmForgotPassword" class="form-input" placeholder="Confirm your new password" autocomplete="new-password">
+            <button type="button" class="toggle-password" onclick="toggleConfirmForgotPasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <button class="forgot-password-btn" onclick="resetPassword()" id="resetPasswordButton">Reset Password</button>
+      </div>
+      
+      <div id="forgotPasswordMessage" class="login-message" style="display:none;"></div>
+      
+      <a class="back-to-login" onclick="showLoginForm()">Back to Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREATE CUSTOMER ACCOUNT SECTION -->
+<section id="createAccountSection" class="create-account-section">
+  <div class="login-section">
+    <div class="create-account-container">
+      <!-- EDITABLE IMAGE LINK -->
+      <img src="image/logo.jpg" alt="Loveat Pasta Logo" class="login-logo">
+      <h2 class="create-account-title">Create Customer Account</h2>
+      <p class="create-account-subtitle">Join our pasta community</p>
+      
+      <div class="create-account-form">
+        <div class="form-group">
+          <label class="form-label" for="newUsername">Username</label>
+          <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+          <input type="text" id="newUsername" class="form-input" placeholder="Choose a username" autocomplete="username">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="newPassword">Password</label>
+          <div class="password-container">
+            <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+            <input type="password" id="newPassword" class="form-input" placeholder="Create a password" oninput="validatePassword()" autocomplete="new-password">
+            <button type="button" class="toggle-password" onclick="toggleNewPasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div id="passwordStrength" class="password-strength"></div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirm Password</label>
+          <div class="password-container">
+            <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+            <input type="password" id="confirmPassword" class="form-input" placeholder="Confirm your password" autocomplete="new-password">
+            <button type="button" class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+          <input type="email" id="email" class="form-input" placeholder="Enter your email" autocomplete="email">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="fullName">Full Name</label>
+          <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+          <input type="text" id="fullName" class="form-input" placeholder="Enter your full name" autocomplete="name">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <!-- REMOVED AUTOCOMPLETE ATTRIBUTE TO DISABLE AUTO-FILL -->
+          <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number (e.g., 09xxxxxxxxx)" oninput="validatePhilippinePhone()" autocomplete="tel">
+          <div id="phoneValidation" class="phone-validation"></div>
+        </div>
+        
+        <button class="create-account-btn" onclick="createAccount()" id="createAccountButton">Create Account</button>
+      </div>
+      
+      <div id="createAccountMessage" class="login-message" style="display:none;"></div>
+      
+      <a class="back-to-login" onclick="showLoginForm()">Back to Login</a>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER DASHBOARD -->
+<section id="customerView" style="display:none;">
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h2 class="dashboard-title">Menu & Order Tracking</h2>
+      <div class="user-info">
+        <div class="user-avatar" id="customerAvatar">C</div>
+        <span id="customerUsername">Customer</span>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+    
+    <!-- UPDATED ACCOUNT MANAGEMENT SECTION -->
+    <div class="account-management">
+      <h3>Account Management</h3>
+      <div class="account-actions">
+        <button class="account-btn" onclick="showCustomerPasswordChange()">
+          <i class="fas fa-key"></i> Change Password
+          <div class="account-btn-description">Update your account password for enhanced security</div>
+        </button>
+        <button class="account-btn delete" onclick="deleteCustomerAccount()">
+          <i class="fas fa-trash"></i> Delete Account
+          <div class="account-btn-description">Permanently remove your account and all associated data</div>
+        </button>
+      </div>
+    </div>
+    
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-utensils"></i> Our Menu</h3>
+        </div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </div>
+      
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Your Order</h3>
+        </div>
+        <div id="cart">
+          <div class="empty-state">
+            <i class="fas fa-shopping-cart"></i>
+            <p>Your cart is empty</p>
+          </div>
+        </div>
+        <button class="checkout-btn" onclick="showPaymentModal()"><i class="fas fa-credit-card"></i> Make Payment</button>
+      </div>
+    </div>
+    
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-map-marker-alt"></i> Track Your Orders</h3>
+      </div>
+      
+      <div class="search-container">
+        <input type="text" id="orderSearch" class="search-box" placeholder="Search by order ID or item name...">
+        <div class="filter-options">
+          <button class="filter-btn active" onclick="filterOrders('all')">All Orders</button>
+          <button class="filter-btn" onclick="filterOrders('active')">Active</button>
+          <button class="filter-btn" onclick="filterOrders('completed')">Completed</button>
+        </div>
+      </div>
+      
+      <div id="currentOrder">
+        <h4 style="text-align: left; margin-bottom: 15px; color: var(--primary);">Current Order</h4>
+        <div id="orderStatus">
+          <div class="empty-state">
+            <i class="fas fa-clock"></i>
+            <p>No active orders</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="history-container">
+        <h4 style="text-align: left; margin-bottom: 15px; color: var(--primary);">Order History</h4>
+        <div id="orderHistory" class="history-list">
+          <div class="empty-state">
+            <i class="fas fa-history"></i>
+            <p>No order history available</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- REMOVED ABOUT US SECTION FROM CUSTOMER DASHBOARD -->
+  </div>
+</section>
+
+<!-- STAFF DASHBOARD -->
+<section id="staffView" style="display:none;">
+  <div class="staff-dashboard">
+    <div class="dashboard-header">
+      <h2 class="dashboard-title">Staff Dashboard</h2>
+      <div class="user-info">
+        <div class="user-avatar" id="staffAvatar">S</div>
+        <span id="staffUsername">Staff</span>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+    
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-value" id="totalOrders">0</div>
+        <div class="stat-label">Total Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="preparingOrders">0</div>
+        <div class="stat-label">Preparing</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="readyOrders">0</div>
+        <div class="stat-label">Ready</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="onthewayOrders">0</div>
+        <div class="stat-label">On the Way</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="deliveredOrders">0</div>
+        <div class="stat-label">Delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="cancelledOrders">0</div>
+        <div class="stat-label">Cancelled</div>
+      </div>
+    </div>
+    
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-list-alt"></i> Order Management</h3>
+      </div>
+      <div id="ordersList">
+        <div class="empty-state">
+          <i class="fas fa-clipboard-list"></i>
+          <p>No orders to manage</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-card">
+      <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-times-circle"></i> Cancelled Orders History</h3>
+      </div>
+      <div id="cancelledOrdersList">
+        <div class="empty-state">
+          <i class="fas fa-ban"></i>
+          <p>No cancelled orders</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN DASHBOARD -->
+<section id="adminView" style="display:none;">
+  <div class="admin-dashboard">
+    <div class="dashboard-header">
+      <h2 class="dashboard-title">Admin Dashboard</h2>
+      <div class="user-info">
+        <div class="user-avatar">A</div>
+        <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </div>
+    
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-value" id="adminTotalOrders">0</div>
+        <div class="stat-label">Total Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="adminActiveOrders">0</div>
+        <div class="stat-label">Active Orders</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="adminTotalRevenue">₱0</div>
+        <div class="stat-label">Total Revenue</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="adminTotalUsers">3</div>
+        <div class="stat-label">Total Users</div>
+      </div>
+    </div>
+    
+    <div class="admin-grid">
+      <div class="admin-section">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-utensils"></i> Manage Menu</h3>
+        </div>
+        
+        <div class="image-upload-container">
+          <img id="imagePreview" class="image-preview" src="" alt="Image preview">
+          <label for="imageUpload" class="file-input-label">
+            <i class="fas fa-upload"></i> Choose Image
+          </label>
+          <input type="file" id="imageUpload" class="file-input" accept="image/*" onchange="previewImage(event)">
+        </div>
+        
+        <!-- UPDATED: Added description field for menu items -->
+        <div class="form-row">
+          <input type="text" id="newItem" class="form-input" placeholder="Item name">
+          <input type="number" id="newPrice" class="form-input" placeholder="Price">
+          <input type="text" id="newDescription" class="form-input" placeholder="Description">
+          <button class="add-btn" onclick="addMenuItem()"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        
+        <div id="adminMenu">
+          <div class="empty-state">
+            <i class="fas fa-utensils"></i>
+            <p>No menu items yet</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="admin-section">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-users"></i> Manage Users</h3>
+        </div>
+        
+        <div class="account-actions">
+          <button class="account-btn" onclick="showDisabledUsers()">
+            <i class="fas fa-user-slash"></i> View Disabled Accounts
+          </button>
+        </div>
+        
+        <div id="userList">
+          <div class="empty-state">
+            <i class="fas fa-users"></i>
+            <p>No users to display</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="paymentModal">
+  <div class="payment-modal">
+    <h2 class="payment-title">Complete Your Order</h2>
+    
+    <div class="payment-form">
+      <div class="form-group">
+        <label class="form-label" for="customerName">Full Name</label>
+        <input type="text" id="customerName" class="form-input" placeholder="Enter your full name" required autocomplete="name">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="customerPhone">Phone Number</label>
+        <input type="tel" id="customerPhone" class="form-input" placeholder="Enter your phone number (e.g., 09xxxxxxxxx)" oninput="validatePaymentPhone()" required autocomplete="tel">
+        <div id="paymentPhoneValidation" class="phone-validation"></div>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="customerLocation">Delivery Location</label>
+        <input type="text" id="customerLocation" class="form-input" placeholder="Enter your complete address" required autocomplete="street-address">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">Payment Method</label>
+        <div class="payment-methods">
+          <div class="payment-method">
+            <input type="radio" id="cod" name="paymentMethod" value="cash-on-delivery" class="payment-radio" checked onchange="togglePaymentDetails()">
+            <label for="cod" class="payment-label">
+              <i class="fas fa-money-bill-wave"></i>
+              Cash on Delivery
+            </label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="ewallet" name="paymentMethod" value="e-wallet" class="payment-radio" onchange="togglePaymentDetails()">
+            <label for="ewallet" class="payment-label">
+              <i class="fas fa-mobile-alt"></i>
+              E-Wallet
+            </label>
+          </div>
+          <div class="payment-method">
+            <input type="radio" id="creditcard" name="paymentMethod" value="credit-card" class="payment-radio" onchange="togglePaymentDetails()">
+            <label for="creditcard" class="payment-label">
+              <i class="fas fa-credit-card"></i>
+              Credit Card
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- E-Wallet Payment Details -->
+      <div id="ewalletDetails" class="payment-details">
+        <div class="form-group">
+          <label class="form-label" for="ewalletProvider">E-Wallet Provider</label>
+          <select id="ewalletProvider" class="form-input">
+            <option value="gcash">GCash</option>
+            <option value="maya">Maya</option>
+            <option value="paymaya">PayMaya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="accountNumber">Account Number</label>
+          <input type="text" id="accountNumber" class="form-input" placeholder="Enter account number">
+        </div>
+        <!-- ADDED ACCOUNT NAME FOR USER/CUSTOMER -->
+        <div class="form-group">
+          <label class="form-label" for="userAccountName">Your Account Name</label>
+          <input type="text" id="userAccountName" class="form-input" placeholder="Enter your e-wallet account name">
+        </div>
+        <!-- ADDED ACCOUNT DETAILS FOR E-WALLET -->
+        <div class="account-details" id="ewalletAccountDetails">
+          <h4>Loveat Pasta Account Details</h4>
+          <p id="ewalletAccountInfo">GCash: 0917 123 4567</p>
+          <p><strong>Account Name:</strong> Loveat Pasta Restaurant</p>
+          <p><small>Please use this account for payment and include account number</small></p>
+        </div>
+      </div>
+      
+      <!-- Credit Card Payment Details -->
+      <div id="creditcardDetails" class="payment-details">
+        <div class="form-group">
+          <label class="form-label" for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" class="form-input" placeholder="Enter card number" autocomplete="cc-number">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="expiryDate">Expiry Date</label>
+          <input type="text" id="expiryDate" class="form-input" placeholder="MM/YY" autocomplete="cc-exp">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cvv">CVV</label>
+          <input type="text" id="cvv" class="form-input" placeholder="CVV" autocomplete="cc-csc">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cardName">Name on Card</label>
+          <input type="text" id="cardName" class="form-input" placeholder="Enter name on card" autocomplete="cc-name">
+        </div>
+        <!-- ADDED BANK ACCOUNT DETAILS FOR CREDIT CARD -->
+        <div class="account-details">
+          <h4>Loveat Pasta Bank Account</h4>
+          <p><strong>Bank:</strong> BDO (Banco de Oro)</p>
+          <p><strong>Account Number:</strong> 0012 3456 7890</p>
+          <p><strong>Account Name:</strong> Loveat Pasta Restaurant</p>
+        </div>
+      </div>
+      
+      <div class="order-summary">
+        <h4 style="margin:20px 0 10px; color:var(--primary);">Order Summary</h4>
+        <div id="paymentCartItems"></div>
+        <!-- ADDED SHIPPING FEE DISPLAY -->
+        <div id="shippingFeeDisplay" style="margin: 10px 0; padding: 10px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee;"></div>
+        <div class="cart-total" id="paymentCartTotal"></div>
+      </div>
+      
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="confirmation-btn" style="background:var(--danger);" onclick="closePaymentModal()">Cancel</button>
+        <button class="confirmation-btn" onclick="processPayment()" id="processPaymentButton">Confirm Payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT CONFIRMATION MODAL -->
+<div class="modal-overlay" id="confirmationModal">
+  <div class="confirmation-modal">
+    <div class="confirmation-icon">
+      <i class="fas fa-check"></i>
+    </div>
+    <h2 class="confirmation-title">Payment Successful!</h2>
+    <p class="confirmation-message">Your order has been placed successfully and is now being prepared.</p>
+    <div class="order-id-display" id="orderIdDisplay">Order ID: ORD-442991</div>
+    <button class="confirmation-btn" onclick="closeConfirmation()">Continue</button>
+  </div>
+</div>
+
+<!-- CUSTOM CONFIRMATION MODAL -->
+<div class="modal-overlay" id="customConfirmationModal">
+  <div class="custom-confirmation-modal">
+    <div class="custom-confirmation-icon">
+      <i class="fas fa-exclamation"></i>
+    </div>
+    <h2 class="custom-confirmation-title">Confirm Deletion</h2>
+    <p class="custom-confirmation-message" id="customConfirmationMessage">Are you sure you want to delete this account?</p>
+    <div class="custom-confirmation-buttons">
+      <button class="custom-confirmation-btn cancel" onclick="closeCustomConfirmation(false)">No</button>
+      <button class="custom-confirmation-btn ok" onclick="closeCustomConfirmation(true)">Yes</button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER PASSWORD CHANGE MODAL -->
+<div class="modal-overlay" id="customerPasswordChangeModal">
+  <div class="payment-modal">
+    <h2 class="payment-title">Change Password</h2>
+    <div class="payment-form">
+      <div class="form-group">
+        <label class="form-label" for="currentCustomerPassword">Current Password</label>
+        <div class="password-container">
+          <input type="password" id="currentCustomerPassword" class="form-input" placeholder="Enter current password" autocomplete="current-password">
+          <button type="button" class="toggle-password" onclick="toggleCurrentCustomerPasswordVisibility()">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="newCustomerPassword">New Password</label>
+        <div class="password-container">
+          <input type="password" id="newCustomerPassword" class="form-input" placeholder="Enter new password" oninput="validateCustomerPassword()" autocomplete="new-password">
+          <button type="button" class="toggle-password" onclick="toggleNewCustomerPasswordVisibility()">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+        <div id="customerPasswordStrength" class="password-strength"></div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="confirmCustomerPassword">Confirm Password</label>
+        <div class="password-container">
+          <input type="password" id="confirmCustomerPassword" class="form-input" placeholder="Confirm new password" autocomplete="new-password">
+          <button type="button" class="toggle-password" onclick="toggleConfirmCustomerPasswordVisibility()">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="confirmation-btn" style="background:var(--danger);" onclick="closeCustomerPasswordChangeModal()">Cancel</button>
+        <button class="confirmation-btn" onclick="updateCustomerPassword()">Update Password</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISABLED USERS MODAL -->
+<div class="modal-overlay" id="disabledUsersModal">
+  <div class="payment-modal">
+    <h2 class="payment-title">Disabled Accounts</h2>
+    <div class="payment-form">
+      <div id="disabledUsersList">
+        <div class="empty-state">
+          <i class="fas fa-user-slash"></i>
+          <p>No disabled accounts</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:20px;">
+        <button class="confirmation-btn" style="background:var(--danger);" onclick="closeDisabledUsersModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Enhanced security: Simple password hashing function
+  function simpleHash(password) {
+    let hash = 0;
+    for (let i = 0; i < password.length; i++) {
+      const char = password.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash.toString();
+  }
+
+  // Enhanced data persistence functions
+  function saveToStorage(key, data) {
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+      return true;
+    } catch (e) {
+      console.error('Failed to save to localStorage:', e);
+      return false;
+    }
+  }
+
+  function loadFromStorage(key, defaultValue = null) {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : defaultValue;
+    } catch (e) {
+      console.error('Failed to load from localStorage:', e);
+      return defaultValue;
+    }
+  }
+
+  // NEW: Notification system
+  function showNotification(type, title, message, duration = 5000) {
+    const notificationContainer = document.getElementById('notificationContainer');
+    const notificationId = 'notification-' + Date.now();
+    
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.id = notificationId;
+    
+    let icon = 'fa-info-circle';
+    if (type === 'success') icon = 'fa-check-circle';
+    else if (type === 'error') icon = 'fa-exclamation-circle';
+    else if (type === 'warning') icon = 'fa-exclamation-triangle';
+    
+    notification.innerHTML = `
+      <div class="notification-icon">
+        <i class="fas ${icon}"></i>
+      </div>
+      <div class="notification-content">
+        <div class="notification-title">${title}</div>
+        <div class="notification-message">${message}</div>
+      </div>
+      <button class="notification-close" onclick="closeNotification('${notificationId}')">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    
+    notificationContainer.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => {
+      notification.classList.add('active');
+    }, 10);
+    
+    // Auto-close after duration
+    if (duration > 0) {
+      setTimeout(() => {
+        closeNotification(notificationId);
+      }, duration);
+    }
+    
+    return notificationId;
+  }
+
+  function closeNotification(id) {
+    const notification = document.getElementById(id);
+    if (notification) {
+      notification.classList.remove('active');
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 300);
+    }
+  }
+
+  // NEW: Philippine phone number validation
+  function validatePhilippinePhone() {
+    const phoneInput = document.getElementById('phone');
+    const phoneValue = phoneInput.value.trim();
+    const validationElement = document.getElementById('phoneValidation');
+    
+    // Philippine phone number pattern (starts with 09, 11 digits total)
+    const phPhonePattern = /^(09|\+639)\d{9}$/;
+    
+    if (!phoneValue) {
+      validationElement.textContent = '';
+      return false;
+    }
+    
+    // Remove spaces and dashes for validation
+    const cleanPhone = phoneValue.replace(/[\s\-]/g, '');
+    
+    if (phPhonePattern.test(cleanPhone)) {
+      validationElement.textContent = '✓ Valid Philippine phone number';
+      validationElement.className = 'phone-validation valid';
+      return true;
+    } else {
+      validationElement.textContent = 'Please enter a valid Philippine phone number (e.g., 09xxxxxxxxx)';
+      validationElement.className = 'phone-validation invalid';
+      return false;
+    }
+  }
+
+  // NEW: Payment phone number validation
+  function validatePaymentPhone() {
+    const phoneInput = document.getElementById('customerPhone');
+    const phoneValue = phoneInput.value.trim();
+    const validationElement = document.getElementById('paymentPhoneValidation');
+    
+    // Philippine phone number pattern (starts with 09, 11 digits total)
+    const phPhonePattern = /^(09|\+639)\d{9}$/;
+    
+    if (!phoneValue) {
+      validationElement.textContent = '';
+      return false;
+    }
+    
+    // Remove spaces and dashes for validation
+    const cleanPhone = phoneValue.replace(/[\s\-]/g, '');
+    
+    if (phPhonePattern.test(cleanPhone)) {
+      validationElement.textContent = '✓ Valid Philippine phone number';
+      validationElement.className = 'phone-validation valid';
+      return true;
+    } else {
+      validationElement.textContent = 'Please enter a valid Philippine phone number (e.g., 09xxxxxxxxx)';
+      validationElement.className = 'phone-validation invalid';
+      return false;
+    }
+  }
+
+  // NEW: Password strength validation
+  function validatePassword() {
+    const passwordInput = document.getElementById('newPassword');
+    const passwordValue = passwordInput.value;
+    const strengthElement = document.getElementById('passwordStrength');
+    
+    if (!passwordValue) {
+      strengthElement.textContent = '';
+      return false;
+    }
+    
+    // Check if password is only numbers
+    if (/^\d+$/.test(passwordValue)) {
+      strengthElement.textContent = 'Password cannot be numbers only';
+      strengthElement.className = 'password-strength weak';
+      return false;
+    }
+    
+    // Check if password contains at least one letter and one number
+    const hasLetter = /[a-zA-Z]/.test(passwordValue);
+    const hasNumber = /\d/.test(passwordValue);
+    
+    if (hasLetter && hasNumber) {
+      strengthElement.textContent = '✓ Strong password';
+      strengthElement.className = 'password-strength strong';
+      return true;
+    } else {
+      strengthElement.textContent = 'Password must contain both letters and numbers';
+      strengthElement.className = 'password-strength weak';
+      return false;
+    }
+  }
+
+  // NEW: Forgot password strength validation
+  function validateForgotPassword() {
+    const passwordInput = document.getElementById('newForgotPassword');
+    const passwordValue = passwordInput.value;
+    const strengthElement = document.getElementById('forgotPasswordStrength');
+    
+    if (!passwordValue) {
+      strengthElement.textContent = '';
+      return false;
+    }
+    
+    // Check if password is only numbers
+    if (/^\d+$/.test(passwordValue)) {
+      strengthElement.textContent = 'Password cannot be numbers only';
+      strengthElement.className = 'password-strength weak';
+      return false;
+    }
+    
+    // Check if password contains at least one letter and one number
+    const hasLetter = /[a-zA-Z]/.test(passwordValue);
+    const hasNumber = /\d/.test(passwordValue);
+    
+    if (hasLetter && hasNumber) {
+      strengthElement.textContent = '✓ Strong password';
+      strengthElement.className = 'password-strength strong';
+      return true;
+    } else {
+      strengthElement.textContent = 'Password must contain both letters and numbers';
+      strengthElement.className = 'password-strength weak';
+      return false;
+    }
+  }
+
+  // NEW: Customer password strength validation
+  function validateCustomerPassword() {
+    const passwordInput = document.getElementById('newCustomerPassword');
+    const passwordValue = passwordInput.value;
+    const strengthElement = document.getElementById('customerPasswordStrength');
+    
+    if (!passwordValue) {
+      strengthElement.textContent = '';
+      return false;
+    }
+    
+    // Check if password is only numbers
+    if (/^\d+$/.test(passwordValue)) {
+      strengthElement.textContent = 'Password cannot be numbers only';
+      strengthElement.className = 'password-strength weak';
+      return false;
+    }
+    
+    // Check if password contains at least one letter and one number
+    const hasLetter = /[a-zA-Z]/.test(passwordValue);
+    const hasNumber = /\d/.test(passwordValue);
+    
+    if (hasLetter && hasNumber) {
+      strengthElement.textContent = '✓ Strong password';
+      strengthElement.className = 'password-strength strong';
+      return true;
+    } else {
+      strengthElement.textContent = 'Password must contain both letters and numbers';
+      strengthElement.className = 'password-strength weak';
+      return false;
+    }
+  }
+
+  // RESET: Only 3 main users (customer, staff, admin) - remove "customer 1" and "staff 1"
+  const users = {
+    Customer: { username: "customer", password: simpleHash("Cus.1") },
+    Staff: { username: "staff", password: simpleHash("Staff.1") },
+    Admin: { username: "admin", password: simpleHash("Admin.1") }
+  };
+
+  // NEW: Store for custom user accounts with hashed passwords
+  const customUsers = loadFromStorage('customUsers', {});
+
+  // NEW: Store for disabled users
+  const disabledUsers = loadFromStorage('disabledUsers', {});
+
+  // NEW: Store for orders with user association
+  const allOrders = loadFromStorage('allOrders', []);
+  
+  // NEW: Track current logged-in user
+  let currentUser = null;
+
+  // Enhanced menu with persistence - CHANGED TO LOCAL IMAGES
+  let menu = loadFromStorage('menu', [
+    { name:"Carbonara", price:180, img:"image/carbonara.jpg", description:"Creamy pasta with bacon and cheese" },
+    { name:"Pesto Pasta", price:160, img:"image/pesto.jpg", description:"Fresh basil pesto with pine nuts" },
+    { name:"Tuna Pasta", price:200, img:"image/tuna.jpg", description:"Tuna flakes in tomato sauce" },
+    { name:"Chicken Alfredo", price:170, img:"image/chicken.jpg", description:"Creamy Alfredo sauce with grilled chicken" },
+    { name:"Lasagna", price:220, img:"image/lasagna.jpg", description:"Layered pasta with meat and cheese" },
+    // ADDED 5 NEW MENU ITEMS
+    { name:"Spaghetti Bolognese", price:190, img:"image/bolognese.jpg", description:"Classic meat sauce with spaghetti" },
+    { name:"Seafood Marinara", price:250, img:"image/seafood.jpg", description:"Mixed seafood in tomato sauce" },
+    { name:"Four Cheese Pasta", price:210, img:"image/creamy.jpg", description:"Blend of four Italian cheeses" },
+    { name:"Truffle Mushroom Pasta", price:280, img:"image/mushroom.jpg", description:"Truffle-infused cream with mushrooms" },
+    { name:"Spicy Arrabbiata", price:175, img:"image/spicy.jpg", description:"Spicy tomato sauce with chili" }
+  ]);
+
+  let role = "Customer", cart = [], orders = [];
+  let currentFilter = 'all';
+  let selectedImage = null;
+  let pendingConfirmation = null;
+  let selectedStaffForPasswordChange = null;
+
+  // NEW: Calculate shipping fee based on item count
+  function calculateShippingFee(itemCount) {
+    if (itemCount >= 9) {
+      return 0; // Free delivery for 9+ items
+    } else if (itemCount >= 4) {
+      return 30; // ₱30 for 4-8 items
+    } else {
+      return 100; // ₱100 for 1-3 items
+    }
+  }
+
+  // NEW: Update e-wallet account details based on provider
+  function updateEwalletAccountDetails() {
+    const provider = document.getElementById('ewalletProvider').value;
+    const accountInfo = document.getElementById('ewalletAccountInfo');
+    
+    switch(provider) {
+      case 'gcash':
+        accountInfo.textContent = 'GCash: 0917 123 4567';
+        break;
+      case 'maya':
+        accountInfo.textContent = 'Maya: 0918 765 4321';
+        break;
+      case 'paymaya':
+        accountInfo.textContent = 'PayMaya: 0919 555 8888';
+        break;
+    }
+  }
+
+  // NEW: Toggle payment details based on selected payment method
+  function togglePaymentDetails() {
+    const ewalletDetails = document.getElementById('ewalletDetails');
+    const creditcardDetails = document.getElementById('creditcardDetails');
+    
+    const selectedPayment = document.querySelector('input[name="paymentMethod"]:checked').value;
+    
+    // Hide all payment details first
+    ewalletDetails.classList.remove('active');
+    creditcardDetails.classList.remove('active');
+    
+    // Show relevant payment details
+    if (selectedPayment === 'e-wallet') {
+      ewalletDetails.classList.add('active');
+      updateEwalletAccountDetails();
+    } else if (selectedPayment === 'credit-card') {
+      creditcardDetails.classList.add('active');
+    }
+  }
+
+  // NEW: Username auto-complete functionality - RESET: Remove "customer 1" and "staff 1" from suggestions
+  function setupUsernameAutocomplete() {
+    const usernameInput = document.getElementById('username');
+    
+    // RESET: Only include the 3 main users in suggestions
+    const savedUsernames = ["customer", "staff", "admin"];
+    
+    // Create datalist element
+    let datalist = document.getElementById('username-datalist');
+    if (!datalist) {
+        datalist = document.createElement('datalist');
+        datalist.id = 'username-datalist';
+        document.body.appendChild(datalist);
+    }
+    
+    // Update datalist options
+    updateDatalistOptions(savedUsernames);
+    
+    // Set the datalist for the input
+    usernameInput.setAttribute('list', 'username-datalist');
+  }
+
+  // NEW: Save username to history
+  function saveUsernameToHistory(username) {
+    if (!username) return;
+    
+    const savedUsernames = loadFromStorage('savedUsernames', []);
+    
+    // Remove if already exists (to avoid duplicates)
+    const index = savedUsernames.indexOf(username);
+    if (index > -1) {
+        savedUsernames.splice(index, 1);
+    }
+    
+    // Add to beginning of array
+    savedUsernames.unshift(username);
+    
+    // Keep only last 5 usernames
+    const limitedUsernames = savedUsernames.slice(0, 5);
+    
+    // Save to localStorage
+    saveToStorage('savedUsernames', limitedUsernames);
+    
+    // Update datalist
+    updateDatalistOptions(limitedUsernames);
+  }
+
+  // NEW: Update datalist options
+  function updateDatalistOptions(usernames) {
+    const datalist = document.getElementById('username-datalist');
+    if (!datalist) return;
+    
+    // Clear existing options
+    datalist.innerHTML = '';
+    
+    // Add new options
+    usernames.forEach(username => {
+        const option = document.createElement('option');
+        option.value = username;
+        datalist.appendChild(option);
+    });
+  }
+
+  // NEW: Password visibility toggle
+  function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const toggleButton = document.querySelector('.toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle new password visibility
+  function toggleNewPasswordVisibility() {
+    const passwordInput = document.getElementById('newPassword');
+    const toggleButton = document.querySelector('#newPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle confirm password visibility
+  function toggleConfirmPasswordVisibility() {
+    const passwordInput = document.getElementById('confirmPassword');
+    const toggleButton = document.querySelector('#confirmPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle remembered password visibility
+  function toggleRememberedPasswordVisibility() {
+    const passwordInput = document.getElementById('rememberedPassword');
+    const toggleButton = document.querySelector('#rememberedPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle new forgot password visibility
+  function toggleNewForgotPasswordVisibility() {
+    const passwordInput = document.getElementById('newForgotPassword');
+    const toggleButton = document.querySelector('#newForgotPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle confirm forgot password visibility
+  function toggleConfirmForgotPasswordVisibility() {
+    const passwordInput = document.getElementById('confirmForgotPassword');
+    const toggleButton = document.querySelector('#confirmForgotPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle current customer password visibility
+  function toggleCurrentCustomerPasswordVisibility() {
+    const passwordInput = document.getElementById('currentCustomerPassword');
+    const toggleButton = document.querySelector('#currentCustomerPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle new customer password visibility
+  function toggleNewCustomerPasswordVisibility() {
+    const passwordInput = document.getElementById('newCustomerPassword');
+    const toggleButton = document.querySelector('#newCustomerPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Toggle confirm customer password visibility
+  function toggleConfirmCustomerPasswordVisibility() {
+    const passwordInput = document.getElementById('confirmCustomerPassword');
+    const toggleButton = document.querySelector('#confirmCustomerPassword + .toggle-password i');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleButton.classList.remove('fa-eye');
+        toggleButton.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        toggleButton.classList.remove('fa-eye-slash');
+        toggleButton.classList.add('fa-eye');
+    }
+  }
+
+  // NEW: Loading state management
+  function setLoadingState(button, isLoading) {
+    if (isLoading) {
+      button.disabled = true;
+      button.innerHTML = '<span class="loading-spinner"></span> Processing...';
+    } else {
+      button.disabled = false;
+      if (button.id === 'loginButton') {
+        button.textContent = 'Login';
+      } else if (button.id === 'createAccountButton') {
+        button.textContent = 'Create Account';
+      } else if (button.id === 'processPaymentButton') {
+        button.textContent = 'Confirm Payment';
+      } else if (button.id === 'resetPasswordButton') {
+        button.textContent = 'Reset Password';
+      }
+    }
+  }
+
+  // NEW: Load saved login info on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    setupUsernameAutocomplete();
+    
+    const savedLoginInfo = loadFromStorage('savedLoginInfo');
+    
+    if (savedLoginInfo) {
+      document.getElementById('username').value = savedLoginInfo.username || '';
+      document.getElementById('password').value = savedLoginInfo.password || '';
+      
+      // Also set the role if it was saved
+      if (savedLoginInfo.role) {
+        role = savedLoginInfo.role;
+        // Update active role button
+        document.querySelectorAll('.role-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.textContent === role) {
+            btn.classList.add('active');
+          }
+        });
+        document.querySelector('.login-title').textContent = `${role} Login`;
+      }
+    }
+  });
+
+  // NEW: Enter key support for login
+  document.addEventListener('keydown', function(event) {
+    // Check if Enter key is pressed and login form is visible
+    if (event.key === 'Enter' && document.getElementById('loginSection').style.display !== 'none') {
+      login();
+    }
+    
+    // Check if Enter key is pressed and create account form is visible
+    if (event.key === 'Enter' && document.getElementById('createAccountSection').style.display !== 'none') {
+      createAccount();
+    }
+    
+    // Check if Enter key is pressed and forgot password form is visible
+    if (event.key === 'Enter' && document.getElementById('forgotPasswordSection').style.display !== 'none') {
+      resetPassword();
+    }
+  });
+
+  // Generate unique order IDs
+  function generateOrderId() {
+    return 'ORD-' + Date.now().toString().substr(-6);
+  }
+
+  // --- IMAGE UPLOAD FUNCTIONALITY ---
+  function previewImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const preview = document.getElementById('imagePreview');
+        preview.src = e.target.result;
+        preview.classList.add('active');
+        selectedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // --- PAGE NAVIGATION ---
+  function selectRole(selectedRole) {
+    role = selectedRole;
+    
+    // Update active role button
+    document.querySelectorAll('.role-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Update login title
+    document.querySelector('.login-title').textContent = `${role} Login`;
+    
+    // UPDATED: Hide "Create Account" link for Staff and Admin roles
+    const createAccountLink = document.getElementById('createAccountLinkContainer');
+    if (role === 'Staff' || role === 'Admin') {
+      createAccountLink.style.display = 'none';
+    } else {
+      createAccountLink.style.display = 'flex';
+    }
+    
+    // NEW: Clear form fields when switching roles
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('loginMessage').style.display = 'none';
+    
+    // NEW: Auto-suggest username based on role - REMOVED AUTO-FILL
+    if (role === 'Customer') {
+      document.getElementById('username').placeholder = 'Enter your username';
+      document.getElementById('password').placeholder = 'Enter your password';
+    } else if (role === 'Staff') {
+      document.getElementById('username').placeholder = 'Enter your username';
+      document.getElementById('password').placeholder = 'Enter your password';
+    } else if (role === 'Admin') {
+      document.getElementById('username').placeholder = 'Enter your username';
+      document.getElementById('password').placeholder = 'Enter your password';
+    }
+  }
+
+  function showLogin(r) {
+    role = r;
+    document.getElementById("loginSection").style.display = "block";
+    document.getElementById("customerView").style.display = "none";
+    document.getElementById("staffView").style.display = "none";
+    document.getElementById("adminView").style.display = "none";
+    document.getElementById("createAccountSection").style.display = "none";
+    document.getElementById("forgotPasswordSection").style.display = "none";
+    
+    // Update active role button
+    document.querySelectorAll('.role-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.textContent === r) {
+        btn.classList.add('active');
+      }
+    });
+    
+    document.querySelector('.login-title').textContent = `${r} Login`;
+    document.getElementById("loginMessage").style.display = "none";
+    
+    // UPDATED: Hide "Create Account" link for Staff and Admin roles
+    const createAccountLink = document.getElementById('createAccountLinkContainer');
+    if (role === 'Staff' || role === 'Admin') {
+      createAccountLink.style.display = 'none';
+    } else {
+      createAccountLink.style.display = 'flex';
+    }
+    
+    // NEW: Clear form fields when showing login
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    
+    // NEW: Auto-suggest username based on role - REMOVED AUTO-FILL
+    if (role === 'Customer') {
+      document.getElementById('username').placeholder = 'Enter your username';
+      document.getElementById('password').placeholder = 'Enter your password';
+    } else if (role === 'Staff') {
+      document.getElementById('username').placeholder = 'Enter your username';
+      document.getElementById('password').placeholder = 'Enter your password';
+    } else if (role === 'Admin') {
+      document.getElementById('username').placeholder = 'Enter your username';
+      document.getElementById('password').placeholder = 'Enter your password';
+    }
+    
+    // Load saved credentials if available
+    const savedLoginInfo = loadFromStorage('savedLoginInfo');
+    if (savedLoginInfo) {
+      document.getElementById('username').value = savedLoginInfo.username || '';
+      document.getElementById('password').value = savedLoginInfo.password || '';
+    }
+  }
+
+  // NEW: Show forgot password form
+  function showForgotPassword() {
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("forgotPasswordSection").style.display = "block";
+    document.getElementById("forgotPasswordMessage").style.display = "none";
+    
+    // Clear form
+    document.getElementById('forgotUsername').value = '';
+    document.getElementById('rememberedPassword').value = '';
+    document.getElementById('newForgotPassword').value = '';
+    document.getElementById('confirmForgotPassword').value = '';
+  }
+
+  // NEW: Show create account form
+  function showCreateAccount() {
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("createAccountSection").style.display = "block";
+    document.getElementById("createAccountMessage").style.display = "none";
+    
+    // Clear form
+    document.getElementById('newUsername').value = '';
+    document.getElementById('newPassword').value = '';
+    document.getElementById('confirmPassword').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('fullName').value = '';
+    document.getElementById('phone').value = '';
+  }
+
+  // NEW: Show login form from create account
+  function showLoginForm() {
+    document.getElementById("createAccountSection").style.display = "none";
+    document.getElementById("forgotPasswordSection").style.display = "none";
+    document.getElementById("loginSection").style.display = "block";
+  }
+
+  // NEW: Reset password function - UPDATED WITH USERNAME AND REMEMBERED PASSWORD
+  function resetPassword() {
+    const username = document.getElementById('forgotUsername').value.trim();
+    const rememberedPassword = document.getElementById('rememberedPassword').value.trim();
+    const newPassword = document.getElementById('newForgotPassword').value.trim();
+    const confirmPassword = document.getElementById('confirmForgotPassword').value.trim();
+    const msg = document.getElementById("forgotPasswordMessage");
+    const button = document.getElementById('resetPasswordButton');
+
+    // Validation
+    if (!username || !rememberedPassword || !newPassword || !confirmPassword) {
+      msg.style.display = "block";
+      msg.textContent = "Please enter all fields!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      msg.style.display = "block";
+      msg.textContent = "New passwords do not match!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    if (newPassword.length < 4) {
+      msg.style.display = "block";
+      msg.textContent = "Password must be at least 4 characters!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // NEW: Check if password is only numbers
+    if (/^\d+$/.test(newPassword)) {
+      msg.style.display = "block";
+      msg.textContent = "Password cannot be numbers only!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // NEW: Check if password contains both letters and numbers
+    const hasLetter = /[a-zA-Z]/.test(newPassword);
+    const hasNumber = /\d/.test(newPassword);
+    
+    if (!hasLetter || !hasNumber) {
+      msg.style.display = "block";
+      msg.textContent = "Password must contain both letters and numbers!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // Set loading state
+    setLoadingState(button, true);
+
+    // Check if username exists and remembered password is correct
+    let userFound = null;
+    let userType = null;
+    
+    // Check demo accounts
+    for (const userRole in users) {
+      if (users[userRole].username === username && users[userRole].password === simpleHash(rememberedPassword)) {
+        userFound = users[userRole].username;
+        userType = 'demo';
+        break;
+      }
+    }
+    
+    // Check custom accounts
+    if (!userFound && customUsers[username] && customUsers[username].password === simpleHash(rememberedPassword)) {
+      userFound = username;
+      userType = 'custom';
+    }
+
+    // Simulate password reset
+    setTimeout(() => {
+      if (userFound) {
+        // Update password
+        if (userType === 'demo') {
+          // For demo users, update the in-memory object
+          for (const userRole in users) {
+            if (users[userRole].username === userFound) {
+              users[userRole].password = simpleHash(newPassword);
+              break;
+            }
+          }
+        } else if (userType === 'custom') {
+          // For custom users, update in storage
+          customUsers[userFound].password = simpleHash(newPassword);
+          saveToStorage('customUsers', customUsers);
+        }
+        
+        msg.style.display = "block";
+        msg.textContent = "Password has been reset successfully!";
+        msg.className = "login-message success";
+        
+        // Reset loading state
+        setLoadingState(button, false);
+        
+        // Redirect to login after a delay
+        setTimeout(() => {
+          showLoginForm();
+        }, 2000);
+      } else {
+        msg.style.display = "block";
+        msg.textContent = "Username not found or remembered password is incorrect!";
+        msg.className = "login-message error";
+        
+        // Reset loading state
+        setLoadingState(button, false);
+      }
+    }, 1500);
+  }
+
+  // NEW: Create account function - UPDATED TO INCREMENT TOTAL USER COUNT
+  function createAccount() {
+    const username = document.getElementById('newUsername').value.trim();
+    const password = document.getElementById('newPassword').value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const msg = document.getElementById("createAccountMessage");
+    const button = document.getElementById('createAccountButton');
+
+    // Validation
+    if (!username || !password || !confirmPassword || !email || !fullName || !phone) {
+      msg.style.display = "block";
+      msg.textContent = "Please fill in all fields!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      msg.style.display = "block";
+      msg.textContent = "Passwords do not match!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    if (password.length < 4) {
+      msg.style.display = "block";
+      msg.textContent = "Password must be at least 4 characters!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // NEW: Check if password is only numbers
+    if (/^\d+$/.test(password)) {
+      msg.style.display = "block";
+      msg.textContent = "Password cannot be numbers only!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // NEW: Check if password contains both letters and numbers
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    
+    if (!hasLetter || !hasNumber) {
+      msg.style.display = "block";
+      msg.textContent = "Password must contain both letters and numbers!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // NEW: Check if phone number is valid
+    if (!validatePhilippinePhone()) {
+      msg.style.display = "block";
+      msg.textContent = "Please enter a valid Philippine phone number!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // Check if username already exists
+    if (customUsers[username] || users[username]) {
+      msg.style.display = "block";
+      msg.textContent = "Username already exists!";
+      msg.className = "login-message error";
+      return;
+    }
+
+    // Set loading state
+    setLoadingState(button, true);
+
+    // Create new user with hashed password
+    customUsers[username] = {
+      password: simpleHash(password),
+      email: email,
+      fullName: fullName,
+      phone: phone,
+      role: 'Customer',
+      enabled: true // NEW: Track enabled status
+    };
+
+    // Save to localStorage
+    saveToStorage('customUsers', customUsers);
+
+    msg.style.display = "block";
+    msg.textContent = "Account created successfully!";
+    msg.className = "login-message success";
+
+    // Reset loading state
+    setLoadingState(button, false);
+
+    // Redirect to login after a delay
+    setTimeout(() => {
+      showLoginForm();
+      document.getElementById('username').value = username;
+      document.getElementById('password').value = password;
+    }, 1500);
+  }
+
+  function login() {
+    const u = document.getElementById('username').value.trim();
+    const p = document.getElementById('password').value.trim();
+    const msg = document.getElementById("loginMessage");
+    const button = document.getElementById('loginButton');
+
+    // Set loading state
+    setLoadingState(button, true);
+
+    // NEW: Check if user is disabled
+    if (disabledUsers[u]) {
+      msg.style.display = "block";
+      msg.textContent = "This account has been disabled. Please contact support.";
+      msg.className = "login-message error";
+      
+      // Reset loading state
+      setLoadingState(button, false);
+      
+      // Shake animation for error
+      document.querySelector('.login-container').style.animation = 'shake 0.5s';
+      setTimeout(() => {
+        document.querySelector('.login-container').style.animation = '';
+      }, 500);
+      return;
+    }
+
+    // Check demo accounts first (with hashed password)
+    if (users[role] && users[role].username === u && users[role].password === simpleHash(p)) {
+      currentUser = { username: u, role: role };
+      saveUsernameToHistory(u);
+      handleSuccessfulLogin(u, p, msg, button);
+      return;
+    }
+
+    // Check custom customer accounts (with hashed password)
+    if (customUsers[u] && customUsers[u].password === simpleHash(p)) {
+      // Custom users are always customers
+      role = 'Customer';
+      currentUser = { username: u, role: role };
+      saveUsernameToHistory(u);
+      handleSuccessfulLogin(u, p, msg, button);
+      return;
+    }
+
+    // Invalid credentials
+    msg.style.display = "block";
+    msg.textContent = "Invalid username or password!";
+    msg.className = "login-message error";
+    
+    // Reset loading state
+    setLoadingState(button, false);
+    
+    // Shake animation for error
+    document.querySelector('.login-container').style.animation = 'shake 0.5s';
+    setTimeout(() => {
+      document.querySelector('.login-container').style.animation = '';
+    }, 500);
+  }
+
+  // NEW: Helper function for successful login
+  function handleSuccessfulLogin(username, password, messageElement, button) {
+    // Save login info
+    const loginInfo = {
+      username: username,
+      password: password,
+      role: role
+    };
+    saveToStorage('savedLoginInfo', loginInfo);
+
+    messageElement.style.display = "block";
+    messageElement.textContent = `${role} logged in successfully!`;
+    messageElement.className = "login-message success";
+    
+    // Reset loading state
+    setLoadingState(button, false);
+    
+    // Add a slight delay for better UX
+    setTimeout(() => {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("nav").style.display = "none";
+      if (role === "Customer") showCustomer();
+      else if (role === "Staff") showStaff();
+      else showAdmin();
+    }, 800);
+  }
+
+  // --- LOGOUT ---
+  function logout() {
+    document.getElementById("customerView").style.display = "none";
+    document.getElementById("staffView").style.display = "none";
+    document.getElementById("adminView").style.display = "none";
+    document.getElementById("nav").style.display = "block";
+    document.getElementById('username').value = "";
+    document.getElementById('password').value = "";
+    role = "Customer";
+    currentUser = null;
+  }
+
+  // --- CUSTOM CONFIRMATION MODAL ---
+  function showCustomConfirmation(message, callback) {
+    document.getElementById('customConfirmationMessage').textContent = message;
+    document.getElementById('customConfirmationModal').classList.add('active');
+    pendingConfirmation = callback;
+  }
+
+  function closeCustomConfirmation(result) {
+    document.getElementById('customConfirmationModal').classList.remove('active');
+    if (pendingConfirmation) {
+      pendingConfirmation(result);
+      pendingConfirmation = null;
+    }
+  }
+
+  // --- CUSTOMER FUNCTIONS ---
+  function showCustomer() {
+    document.getElementById("customerView").style.display = "block";
+    
+    // NEW: Update customer display name and avatar
+    document.getElementById("customerUsername").textContent = currentUser.username;
+    document.getElementById("customerAvatar").textContent = currentUser.username.charAt(0).toUpperCase();
+    
+    const grid = document.getElementById("menuGrid");
+    grid.innerHTML = "";
+    
+    if (menu.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-utensils"></i>
+          <p>No menu items available</p>
+        </div>
+      `;
+    } else {
+      menu.forEach((item,i)=>{
+        grid.innerHTML += `
+          <div class='menu-card'>
+            <img src="${item.img}" alt="${item.name}">
+            <div class="menu-card-content">
+              <h3>${item.name}</h3>
+              <p>${item.description || 'Delicious pasta with rich flavors'}</p>
+              <div class="price">₱${item.price}</div>
+              <button class="add-to-cart-btn" onclick='addToCart(${i})'>Add to Cart</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+    
+    // NEW: Load only current user's orders
+    loadUserOrders();
+    
+    // Initialize order tracking
+    renderCustomerOrder();
+    renderOrderHistory();
+    
+    // Set up search functionality
+    document.getElementById('orderSearch').addEventListener('input', function() {
+      filterOrders(currentFilter);
+    });
+  }
+
+  // NEW: Load only current user's orders
+  function loadUserOrders() {
+    orders = allOrders.filter(order => order.username === currentUser.username);
+  }
+
+  // Add item to cart with quantity tracking
+  function addToCart(i){
+    const existingItem = cart.find(item => item.id === i);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({
+        id: i,
+        name: menu[i].name,
+        price: menu[i].price,
+        quantity: 1
+      });
+    }
+    renderCart();
+  }
+  
+  // Remove item from cart
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    renderCart();
+  }
+  
+  // Update item quantity in cart
+  function updateQuantity(index, change) {
+    cart[index].quantity += change;
+    
+    // Remove item if quantity becomes 0
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+    
+    renderCart();
+  }
+  
+  function renderCart(){
+    const c = document.getElementById("cart");
+    if(!cart.length){
+      c.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Your cart is empty</p>
+        </div>
+      `;
+      return;
+    }
+    
+    let cartHTML = "<div class='cart-items'>";
+    let total = 0;
+    
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      cartHTML += `
+        <div class="cart-item">
+          <div>
+            <span>${item.name}</span>
+            <div class="quantity-controls">
+              <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+              <span class="quantity-display">${item.quantity}</span>
+              <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+              <button class="delete-btn" onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></button>
+            </div>
+          </div>
+          <span>₱${itemTotal}</span>
+        </div>
+      `;
+    });
+    
+    cartHTML += `</div><div class="cart-total">Total: ₱${total}</div>`;
+    c.innerHTML = cartHTML;
+  }
+
+  // Show payment modal with customer information form
+  function showPaymentModal() {
+    if(!cart.length) return;
+    
+    // Populate payment cart items
+    const paymentCartItems = document.getElementById('paymentCartItems');
+    let itemsHTML = '';
+    let subtotal = 0;
+    let itemCount = 0;
+    
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      subtotal += itemTotal;
+      itemCount += item.quantity;
+      itemsHTML += `
+        <div class="cart-item">
+          <span>${item.name} (x${item.quantity})</span>
+          <span>₱${itemTotal}</span>
+        </div>
+      `;
+    });
+    
+    // Calculate shipping fee
+    const shippingFee = calculateShippingFee(itemCount);
+    const total = subtotal + shippingFee;
+    
+    paymentCartItems.innerHTML = itemsHTML;
+    
+    // Display shipping fee and total
+    const shippingFeeDisplay = document.getElementById('shippingFeeDisplay');
+    if (shippingFee === 0) {
+      shippingFeeDisplay.innerHTML = `<div style="display: flex; justify-content: space-between;"><span>Shipping Fee:</span> <span style="color: var(--success);">FREE</span></div>`;
+    } else {
+      shippingFeeDisplay.innerHTML = `<div style="display: flex; justify-content: space-between;"><span>Shipping Fee:</span> <span>₱${shippingFee}</span></div>`;
+    }
+    
+    document.getElementById('paymentCartTotal').textContent = `Total: ₱${total}`;
+    
+    // Show payment modal
+    document.getElementById('paymentModal').classList.add('active');
+  }
+
+  // Close payment modal
+  function closePaymentModal() {
+    document.getElementById('paymentModal').classList.remove('active');
+  }
+
+  // Process payment and create order
+  function processPayment() {
+    const customerName = document.getElementById('customerName').value.trim();
+    const customerPhone = document.getElementById('customerPhone').value.trim();
+    const customerLocation = document.getElementById('customerLocation').value.trim();
+    const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+    const button = document.getElementById('processPaymentButton');
+    
+    if(!customerName || !customerPhone || !customerLocation) {
+      showNotification('error', 'Missing Information', 'Please fill in all required fields!');
+      return;
+    }
+    
+    // NEW: Validate phone number in payment form
+    if (!validatePaymentPhone()) {
+      showNotification('error', 'Invalid Phone Number', 'Please enter a valid Philippine phone number!');
+      return;
+    }
+    
+    // NEW: Validate payment details based on payment method
+    if (paymentMethod === 'e-wallet') {
+      const accountNumber = document.getElementById('accountNumber').value.trim();
+      const userAccountName = document.getElementById('userAccountName').value.trim();
+
+      if (!accountNumber || !userAccountName) {
+        showNotification('error', 'Missing Information', 'Please fill in all e-wallet payment details!');
+        return;
+      }
+    } else if (paymentMethod === 'credit-card') {
+      const cardNumber = document.getElementById('cardNumber').value.trim();
+      const expiryDate = document.getElementById('expiryDate').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+      const cardName = document.getElementById('cardName').value.trim();
+      
+      if (!cardNumber || !expiryDate || !cvv || !cardName) {
+        showNotification('error', 'Missing Information', 'Please fill in all credit card details!');
+        return;
+      }
+    }
+    
+    // Set loading state
+    setLoadingState(button, true);
+    
+    // Calculate shipping fee
+    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const shippingFee = calculateShippingFee(itemCount);
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const total = subtotal + shippingFee;
+    
+    const order = {
+      id: generateOrderId(),
+      items: [...cart],
+      status: "Preparing",
+      date: new Date().toLocaleString(),
+      subtotal: subtotal,
+      shippingFee: shippingFee,
+      total: total,
+      customerName: customerName,
+      customerPhone: customerPhone,
+      customerLocation: customerLocation,
+      paymentMethod: paymentMethod,
+      // NEW: Store user account name for e-wallet payments
+      userAccountName: paymentMethod === 'e-wallet' ? document.getElementById('userAccountName').value.trim() : null,
+      // NEW: Associate order with current user
+      username: currentUser.username
+    };
+    
+    orders.push(order);
+    // NEW: Save to global orders
+    allOrders.push(order);
+    saveToStorage('allOrders', allOrders);
+    
+    // Reset loading state
+    setLoadingState(button, false);
+    
+    // Show custom confirmation modal
+    document.getElementById('orderIdDisplay').textContent = `Order ID: ${order.id}`;
+    document.getElementById('confirmationModal').classList.add('active');
+    
+    // Close payment modal
+    closePaymentModal();
+    
+    // Clear cart and reset form
+    cart = [];
+    renderCart();
+    document.getElementById('customerName').value = '';
+    document.getElementById('customerPhone').value = '';
+    document.getElementById('customerLocation').value = '';
+    document.getElementById('userAccountName').value = '';
+    
+    // Update order tracking
+    renderCustomerOrder();
+    renderOrderHistory();
+    
+    // If staff is logged in, update their view too
+    if (document.getElementById("staffView").style.display !== "none") {
+      renderOrders();
+      updateStaffStats();
+      renderCancelledOrders();
+    }
+    
+    // If admin is logged in, update their view too
+    if (document.getElementById("adminView").style.display !== "none") {
+      updateAdminStats();
+    }
+  }
+
+  function closeConfirmation() {
+    document.getElementById('confirmationModal').classList.remove('active');
+  }
+
+  // Cancel order function with custom confirmation
+  function cancelOrder(orderId) {
+    const order = orders.find(o => o.id === orderId);
+    if (order && order.status !== "Delivered" && order.status !== "Cancelled") {
+      showCustomConfirmation("Are you sure you want to cancel this order?", (confirmed) => {
+        if (confirmed) {
+          order.status = "Cancelled";
+          renderCustomerOrder();
+          renderOrderHistory();
+          
+          // Update global orders
+          const globalOrder = allOrders.find(o => o.id === orderId);
+          if (globalOrder) {
+            globalOrder.status = "Cancelled";
+            saveToStorage('allOrders', allOrders);
+          }
+          
+          // If staff is logged in, update their view too
+          if (document.getElementById("staffView").style.display !== "none") {
+            renderOrders();
+            updateStaffStats();
+            renderCancelledOrders();
+          }
+          
+          // If admin is logged in, update their view too
+          if (document.getElementById("adminView").style.display !== "none") {
+            updateAdminStats();
+          }
+          
+          showNotification('success', 'Order Cancelled', 'Your order has been cancelled successfully.');
+        }
+      });
+    } else {
+      showNotification('error', 'Cannot Cancel', 'Cannot cancel a delivered or cancelled order.');
+    }
+  }
+
+  // NEW: Delete individual order function
+  function deleteOrder(orderId) {
+    showCustomConfirmation("Are you sure you want to delete this order? This action cannot be undone.", (confirmed) => {
+      if (confirmed) {
+        // Remove from local orders
+        const orderIndex = orders.findIndex(o => o.id === orderId);
+        if (orderIndex !== -1) {
+          orders.splice(orderIndex, 1);
+        }
+        
+        // Remove from global orders
+        const globalOrderIndex = allOrders.findIndex(o => o.id === orderId);
+        if (globalOrderIndex !== -1) {
+          allOrders.splice(globalOrderIndex, 1);
+          saveToStorage('allOrders', allOrders);
+        }
+        
+        // Update UI
+        renderCustomerOrder();
+        renderOrderHistory();
+        
+        // If staff is logged in, update their view too
+        if (document.getElementById("staffView").style.display !== "none") {
+          renderOrders();
+          updateStaffStats();
+          renderCancelledOrders();
+        }
+        
+        // If admin is logged in, update their view too
+        if (document.getElementById("adminView").style.display !== "none") {
+          updateAdminStats();
+        }
+        
+        showNotification('success', 'Order Deleted', 'Order has been deleted successfully.');
+      }
+    });
+  }
+
+  // NEW: Show customer password change modal
+  function showCustomerPasswordChange() {
+    document.getElementById('currentCustomerPassword').value = '';
+    document.getElementById('newCustomerPassword').value = '';
+    document.getElementById('confirmCustomerPassword').value = '';
+    document.getElementById('customerPasswordChangeModal').classList.add('active');
+  }
+
+  // NEW: Close customer password change modal
+  function closeCustomerPasswordChangeModal() {
+    document.getElementById('customerPasswordChangeModal').classList.remove('active');
+  }
+
+  // NEW: Update customer password
+  function updateCustomerPassword() {
+    const currentPassword = document.getElementById('currentCustomerPassword').value.trim();
+    const newPassword = document.getElementById('newCustomerPassword').value.trim();
+    const confirmPassword = document.getElementById('confirmCustomerPassword').value.trim();
+    
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      showNotification('error', 'Missing Information', 'Please fill in all password fields!');
+      return;
+    }
+    
+    if (newPassword !== confirmPassword) {
+      showNotification('error', 'Password Mismatch', 'New passwords do not match!');
+      return;
+    }
+    
+    if (newPassword.length < 4) {
+      showNotification('error', 'Weak Password', 'Password must be at least 4 characters!');
+      return;
+    }
+    
+    // NEW: Check if password is only numbers
+    if (/^\d+$/.test(newPassword)) {
+      showNotification('error', 'Weak Password', 'Password cannot be numbers only!');
+      return;
+    }
+    
+    // NEW: Check if password contains both letters and numbers
+    const hasLetter = /[a-zA-Z]/.test(newPassword);
+    const hasNumber = /\d/.test(newPassword);
+    
+    if (!hasLetter || !hasNumber) {
+      showNotification('error', 'Weak Password', 'Password must contain both letters and numbers!');
+      return;
+    }
+    
+    // Verify current password
+    if (currentUser.role === 'Customer' && customUsers[currentUser.username]) {
+      if (customUsers[currentUser.username].password !== simpleHash(currentPassword)) {
+        showNotification('error', 'Incorrect Password', 'Current password is incorrect!');
+        return;
+      }
+      
+      // Update password
+      customUsers[currentUser.username].password = simpleHash(newPassword);
+      saveToStorage('customUsers', customUsers);
+      
+      showNotification('success', 'Password Updated', 'Your password has been updated successfully!');
+      closeCustomerPasswordChangeModal();
+    } else {
+      showNotification('error', 'Update Failed', 'Error updating password. Please try again.');
+    }
+  }
+
+  // NEW: Delete customer account - UPDATED TO REMOVE FROM TOTAL USER COUNT
+  function deleteCustomerAccount() {
+    showCustomConfirmation("Are you sure you want to delete your account? This action cannot be undone.", (confirmed) => {
+      if (confirmed) {
+        // Remove user from customUsers
+        if (customUsers[currentUser.username]) {
+          delete customUsers[currentUser.username];
+          saveToStorage('customUsers', customUsers);
+        }
+        
+        // Mark user as disabled
+        disabledUsers[currentUser.username] = true;
+        saveToStorage('disabledUsers', disabledUsers);
+        
+        // Remove user's orders from allOrders
+        allOrders = allOrders.filter(order => order.username !== currentUser.username);
+        saveToStorage('allOrders', allOrders);
+        
+        // Logout and redirect to login
+        showNotification('success', 'Account Deleted', 'Your account has been deleted successfully.');
+        setTimeout(() => {
+          logout();
+          showLogin('Customer');
+        }, 1500);
+      }
+    });
+  }
+
+  // Enhanced order tracking for customers
+  function renderCustomerOrder() {
+    const orderContainer = document.getElementById("orderStatus");
+    
+    // Find active orders (not delivered or cancelled)
+    const activeOrders = orders.filter(order => order.status !== "Delivered" && order.status !== "Cancelled");
+    
+    if (activeOrders.length === 0) {
+      orderContainer.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-clock"></i>
+          <p>No active orders</p>
+        </div>
+      `;
+      return;
+    }
+    
+    // Show the most recent active order
+    const latestOrder = activeOrders[activeOrders.length - 1];
+    orderContainer.innerHTML = createOrderCard(latestOrder, true);
+  }
+
+  // Render order history
+  function renderOrderHistory() {
+    const historyContainer = document.getElementById("orderHistory");
+    
+    if (orders.length === 0) {
+      historyContainer.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-history"></i>
+          <p>No order history available</p>
+        </div>
+      `;
+      return;
+    }
+    
+    // Filter orders based on current filter
+    let filteredOrders = [...orders];
+    
+    if (currentFilter === 'active') {
+      filteredOrders = orders.filter(order => order.status !== "Delivered" && order.status !== "Cancelled");
+    } else if (currentFilter === 'completed') {
+      filteredOrders = orders.filter(order => order.status === "Delivered");
+    }
+    
+    // Apply search filter if any
+    const searchTerm = document.getElementById('orderSearch').value.toLowerCase();
+    if (searchTerm) {
+      filteredOrders = filteredOrders.filter(order => 
+        order.id.toLowerCase().includes(searchTerm) ||
+        order.items.some(item => item.name.toLowerCase().includes(searchTerm))
+      );
+    }
+    
+    if (filteredOrders.length === 0) {
+      historyContainer.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-search"></i>
+          <p>No orders match your criteria</p>
+        </div>
+      `;
+      return;
+    }
+    
+    // Reverse to show newest first
+    filteredOrders.reverse();
+    
+    // Create order cards for history (excluding the current active order)
+    const activeOrders = orders.filter(order => order.status !== "Delivered" && order.status !== "Cancelled");
+    const latestActiveOrder = activeOrders.length > 0 ? activeOrders[activeOrders.length - 1] : null;
+    
+    const historyOrders = filteredOrders.filter(order => !latestActiveOrder || order.id !== latestActiveOrder.id);
+    
+    if (historyOrders.length === 0) {
+      historyContainer.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-history"></i>
+          <p>No order history available</p>
+        </div>
+      `;
+      return;
+    }
+    
+    historyContainer.innerHTML = historyOrders
+      .map(order => createOrderCard(order, false))
+      .join('');
+  }
+
+  // Create order card HTML
+  function createOrderCard(order, isCurrent) {
+    const statusSteps = ["Preparing", "Ready", "On the Way", "Delivered"];
+    const currentStep = statusSteps.indexOf(order.status);
+    
+    return `
+      <div class="order-card">
+        <div class="order-header">
+          <div class="order-id">Order #${order.id}</div>
+          <div class="order-date">${order.date}</div>
+        </div>
+        <div class="order-items">
+          ${order.items.map(item => `
+            <div class="order-item">
+              <span>${item.name} ${item.quantity > 1 ? `(x${item.quantity})` : ''}</span>
+              <span>₱${item.price * item.quantity}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="order-total">
+          <div>Subtotal: ₱${order.subtotal}</div>
+          <div>Shipping: ${order.shippingFee === 0 ? 'FREE' : `₱${order.shippingFee}`}</div>
+          <div style="font-weight: bold; margin-top: 5px;">Total: ₱${order.total}</div>
+        </div>
+        <div style="margin:10px 0; font-size:0.9rem;">
+          <p><strong>Customer:</strong> ${order.customerName}</p>
+          <p><strong>Contact:</strong> ${order.customerPhone}</p>
+          <p><strong>Location:</strong> ${order.customerLocation}</p>
+          <p><strong>Payment:</strong> ${order.paymentMethod === 'e-wallet' ? 'E-Wallet' : order.paymentMethod === 'credit-card' ? 'Credit Card' : 'Cash on Delivery'}</p>
+          ${order.userAccountName ? `<p><strong>Your Account Name:</strong> ${order.userAccountName}</p>` : ''}
+        </div>
+        
+        ${isCurrent && order.status !== "Cancelled" && order.status !== "Delivered" ? `
+        <div class="status-container">
+          <div class="status-bar">
+            <div class="status-progress" style="width: ${(currentStep / (statusSteps.length - 1)) * 100}%"></div>
+            ${statusSteps.map((step, index) => `
+              <div class="status-step">
+                <div class="status-dot ${index <= currentStep ? 'active' : ''}">
+                  ${index <= currentStep ? '✓' : index + 1}
+                </div>
+                <div class="status-label ${index <= currentStep ? 'active' : ''}">${step}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        ` : `
+          <p><strong>Status:</strong> ${order.status}</p>
+        `}
+        
+        <div class="order-actions" style="display: flex; gap: 10px; margin-top: 15px;">
+          ${(isCurrent || (!isCurrent && order.status !== "Delivered" && order.status !== "Cancelled")) ? `
+            <button class="cancel-order-btn" onclick="cancelOrder('${order.id}')">
+              <i class="fas fa-times"></i> Cancel Order
+            </button>
+          ` : ''}
+          <button class="delete-order-btn" onclick="deleteOrder('${order.id}')">
+            <i class="fas fa-trash"></i> Delete Order
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  // Filter orders
+  function filterOrders(filter) {
+    currentFilter = filter;
+    
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    renderOrderHistory();
+  }
+
+  // --- STAFF FUNCTIONS ---
+  function showStaff(){
+    document.getElementById("staffView").style.display="block";
+    
+    // NEW: Update staff display name and avatar
+    document.getElementById("staffUsername").textContent = currentUser.username;
+    document.getElementById("staffAvatar").textContent = currentUser.username.charAt(0).toUpperCase();
+    
+    renderOrders();
+    updateStaffStats();
+    renderCancelledOrders();
+  }
+
+  function updateStaffStats() {
+    // NEW: Use global orders for staff view
+    document.getElementById("totalOrders").textContent = allOrders.length;
+    document.getElementById("preparingOrders").textContent = allOrders.filter(o => o.status === "Preparing").length;
+    document.getElementById("readyOrders").textContent = allOrders.filter(o => o.status === "Ready").length;
+    document.getElementById("onthewayOrders").textContent = allOrders.filter(o => o.status === "On the Way").length;
+    document.getElementById("deliveredOrders").textContent = allOrders.filter(o => o.status === "Delivered").length;
+    document.getElementById("cancelledOrders").textContent = allOrders.filter(o => o.status === "Cancelled").length;
+  }
+
+  function renderOrders(){
+    const div = document.getElementById("ordersList");
+    
+    // NEW: Use global orders for staff view
+    if(allOrders.length === 0){
+      div.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-clipboard-list"></i>
+          <p>No orders to manage</p>
+        </div>
+      `;
+      return;
+    }
+    
+    // Sort orders by status (preparing first, then ready, then on the way, then delivered)
+    const sortedOrders = [...allOrders].sort((a, b) => {
+      const statusOrder = { "Preparing": 1, "Ready": 2, "On the Way": 3, "Delivered": 4, "Cancelled": 5 };
+      return statusOrder[a.status] - statusOrder[b.status];
+    });
+    
+    div.innerHTML = `
+      <div class="orders-grid">
+        ${sortedOrders.map((order, i) => `
+          <div class="order-panel ${order.status.toLowerCase().replace(' ', '')}">
+            <div class="order-panel-header">
+              <div class="order-panel-id">Order #${order.id}</div>
+              <div class="order-time"><i class="far fa-clock"></i> ${order.date}</div>
+            </div>
+            <div class="order-items-list">
+              ${order.items.map(item => `
+                <div class="order-item-row">
+                  <span>${item.name} ${item.quantity > 1 ? `(x${item.quantity})` : ''}</span>
+                  <span>₱${item.price * item.quantity}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div class="order-total">
+              <div>Subtotal: ₱${order.subtotal}</div>
+              <div>Shipping: ${order.shippingFee === 0 ? 'FREE' : `₱${order.shippingFee}`}</div>
+              <div style="font-weight: bold; margin-top: 5px;">Total: ₱${order.total}</div>
+            </div>
+            <div style="margin:10px 0; font-size:0.9rem;">
+              <p><strong>Customer:</strong> ${order.customerName}</p>
+              <p><strong>Contact:</strong> ${order.customerPhone}</p>
+              <p><strong>Location:</strong> ${order.customerLocation}</p>
+              <p><strong>Payment:</strong> ${order.paymentMethod === 'e-wallet' ? 'E-Wallet' : order.paymentMethod === 'credit-card' ? 'Credit Card' : 'Cash on Delivery'}</p>
+              ${order.userAccountName ? `<p><strong>Customer Account Name:</strong> ${order.userAccountName}</p>` : ''}
+              <!-- NEW: Show which user placed the order -->
+              <p><strong>Placed by:</strong> ${order.username}</p>
+            </div>
+            <div class="order-actions">
+              <select class="status-select" onchange='updateStatus("${order.id}", this.value)' ${order.status === "Delivered" || order.status === "Cancelled" ? "disabled" : ""}>
+                <option value="Preparing" ${order.status==="Preparing"?"selected":""}>Preparing</option>
+                <option value="Ready" ${order.status==="Ready"?"selected":""}>Ready</option>
+                <option value="On the Way" ${order.status==="On the Way"?"selected":""}>On the Way</option>
+                <option value="Delivered" ${order.status==="Delivered"?"selected":""}>Delivered</option>
+                <option value="Cancelled" ${order.status==="Cancelled"?"selected":""}>Cancelled</option>
+              </select>
+              <button class="update-btn" onclick='updateStatus("${order.id}", this.previousElementSibling.value)' ${order.status === "Delivered" || order.status === "Cancelled" ? "disabled" : ""}><i class="fas fa-sync-alt"></i> Update</button>
+              <button class="delete-btn" onclick='deleteOrderAsStaff("${order.id}")'><i class="fas fa-trash"></i> Delete</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  // NEW: Delete order as staff
+  function deleteOrderAsStaff(orderId) {
+    showCustomConfirmation("Are you sure you want to delete this order? This action cannot be undone.", (confirmed) => {
+      if (confirmed) {
+        // Remove from global orders
+        const globalOrderIndex = allOrders.findIndex(o => o.id === orderId);
+        if (globalOrderIndex !== -1) {
+          allOrders.splice(globalOrderIndex, 1);
+          saveToStorage('allOrders', allOrders);
+        }
+        
+        // Update UI
+        renderOrders();
+        updateStaffStats();
+        renderCancelledOrders();
+        
+        // If customer is logged in, update their view too
+        if (document.getElementById("customerView").style.display !== "none") {
+          // Update in user's orders
+          const userOrderIndex = orders.findIndex(o => o.id === orderId);
+          if (userOrderIndex !== -1) {
+            orders.splice(userOrderIndex, 1);
+          }
+          renderCustomerOrder();
+          renderOrderHistory();
+        }
+        
+        // If admin is logged in, update their view too
+        if (document.getElementById("adminView").style.display !== "none") {
+          updateAdminStats();
+        }
+        
+        showNotification('success', 'Order Deleted', 'Order has been deleted successfully.');
+      }
+    });
+  }
+
+  // NEW: Render cancelled orders for staff
+  function renderCancelledOrders() {
+    const cancelledContainer = document.getElementById("cancelledOrdersList");
+    const cancelledOrders = allOrders.filter(order => order.status === "Cancelled");
+    
+    if (cancelledOrders.length === 0) {
+      cancelledContainer.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-ban"></i>
+          <p>No cancelled orders</p>
+        </div>
+      `;
+      return;
+    }
+    
+    cancelledContainer.innerHTML = `
+      <div class="orders-grid">
+        ${cancelledOrders.map((order, i) => `
+          <div class="order-panel cancelled">
+            <div class="order-panel-header">
+              <div class="order-panel-id">Order #${order.id}</div>
+              <div class="order-time"><i class="far fa-clock"></i> ${order.date}</div>
+            </div>
+            <div class="order-items-list">
+              ${order.items.map(item => `
+                <div class="order-item-row">
+                  <span>${item.name} ${item.quantity > 1 ? `(x${item.quantity})` : ''}</span>
+                  <span>₱${item.price * item.quantity}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div class="order-total">
+              <div>Subtotal: ₱${order.subtotal}</div>
+              <div>Shipping: ${order.shippingFee === 0 ? 'FREE' : `₱${order.shippingFee}`}</div>
+              <div style="font-weight: bold; margin-top: 5px;">Total: ₱${order.total}</div>
+            </div>
+            <div style="margin:10px 0; font-size:0.9rem;">
+              <p><strong>Customer:</strong> ${order.customerName}</p>
+              <p><strong>Contact:</strong> ${order.customerPhone}</p>
+              <p><strong>Location:</strong> ${order.customerLocation}</p>
+              <p><strong>Payment:</strong> ${order.paymentMethod === 'e-wallet' ? 'E-Wallet' : order.paymentMethod === 'credit-card' ? 'Credit Card' : 'Cash on Delivery'}</p>
+              ${order.userAccountName ? `<p><strong>Customer Account Name:</strong> ${order.userAccountName}</p>` : ''}
+              <!-- NEW: Show which user placed the order -->
+              <p><strong>Placed by:</strong> ${order.username}</p>
+            </div>
+            <div class="order-actions">
+              <button class="delete-btn" onclick='deleteOrderAsStaff("${order.id}")'><i class="fas fa-trash"></i> Delete</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function updateStatus(orderId, newStatus){
+    // NEW: Update in global orders
+    const order = allOrders.find(o => o.id === orderId);
+    if (order) {
+      // FIXED: Don't allow updating status if order is already delivered or cancelled
+      if (order.status === "Delivered" || order.status === "Cancelled") {
+        showNotification('error', 'Cannot Update', 'Cannot update status of delivered or cancelled orders.');
+        return;
+      }
+      
+      order.status = newStatus;
+      saveToStorage('allOrders', allOrders);
+      renderOrders();
+      updateStaffStats();
+      renderCancelledOrders();
+      
+      // If customer is logged in, update their view too
+      if (document.getElementById("customerView").style.display !== "none") {
+        // Update in user's orders
+        const userOrder = orders.find(o => o.id === orderId);
+        if (userOrder) {
+          userOrder.status = newStatus;
+        }
+        renderCustomerOrder();
+        renderOrderHistory();
+      }
+      
+      // If admin is logged in, update their view too
+      if (document.getElementById("adminView").style.display !== "none") {
+        updateAdminStats();
+      }
+      
+      showNotification('success', 'Status Updated', `Order ${orderId} status updated to ${newStatus}`);
+    }
+  }
+
+  // --- ADMIN FUNCTIONS ---
+  function showAdmin(){
+    document.getElementById("adminView").style.display="block";
+    renderAdminMenu();
+    renderUsers();
+    updateAdminStats();
+  }
+
+  // NEW: Calculate total users including custom users
+  function calculateTotalUsers() {
+    // Count custom users that are enabled
+    const enabledCustomUsers = Object.values(customUsers).filter(user => user.enabled !== false).length;
+    
+    // Add the 3 main users (customer, staff, admin)
+    return 3 + enabledCustomUsers;
+  }
+
+  function updateAdminStats() {
+    document.getElementById("adminTotalOrders").textContent = allOrders.length;
+    document.getElementById("adminActiveOrders").textContent = allOrders.filter(o => o.status !== "Delivered" && o.status !== "Cancelled").length;
+    document.getElementById("adminTotalRevenue").textContent = "₱" + allOrders
+      .filter(o => o.status === "Delivered")
+      .reduce((sum, order) => sum + order.total, 0);
+    // UPDATED: Calculate total users including custom users
+    document.getElementById("adminTotalUsers").textContent = calculateTotalUsers();
+  }
+
+  function renderAdminMenu(){
+    const adminMenu = document.getElementById("adminMenu");
+    
+    if (menu.length === 0) {
+      adminMenu.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-utensils"></i>
+          <p>No menu items yet</p>
+        </div>
+      `;
+      return;
+    }
+    
+    adminMenu.innerHTML = `
+      <div class="menu-list">
+        ${menu.map((item, i) => `
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <img src="${item.img}" alt="${item.name}" class="menu-item-img">
+              <div class="menu-item-details">
+                <h4>${item.name}</h4>
+                <p class="editable-description" data-index="${i}" contenteditable="true">${item.description || 'No description available'}</p>
+                <p>₱<span class="editable-price" data-index="${i}" contenteditable="true">${item.price}</span></p>
+              </div>
+            </div>
+            <button class="remove-btn" onclick='removeItem(${i})'><i class="fas fa-trash"></i> Remove</button>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    
+    // Add event listeners for price editing
+    document.querySelectorAll('.editable-price').forEach(element => {
+      element.addEventListener('blur', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        const newPrice = parseFloat(this.textContent);
+        if (!isNaN(newPrice) && newPrice > 0) {
+          menu[index].price = newPrice;
+          saveToStorage('menu', menu);
+          
+          // If customer is logged in, update their menu view too
+          if (document.getElementById("customerView").style.display !== "none") {
+            showCustomer();
+          }
+          
+          showNotification('success', 'Price Updated', `${menu[index].name} price updated to ₱${newPrice}`);
+        } else {
+          // Reset to original price if invalid
+          this.textContent = menu[index].price;
+          showNotification('error', 'Invalid Price', 'Please enter a valid price');
+        }
+      });
+      
+      // Allow Enter key to save
+      element.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.blur();
+        }
+      });
+    });
+    
+    // NEW: Add event listeners for description editing
+    document.querySelectorAll('.editable-description').forEach(element => {
+      element.addEventListener('blur', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        const newDescription = this.textContent.trim();
+        if (newDescription) {
+          menu[index].description = newDescription;
+          saveToStorage('menu', menu);
+          
+          // If customer is logged in, update their menu view too
+          if (document.getElementById("customerView").style.display !== "none") {
+            showCustomer();
+          }
+          
+          showNotification('success', 'Description Updated', `${menu[index].name} description updated`);
+        } else {
+          // Reset to original description if empty
+          this.textContent = menu[index].description || 'No description available';
+          showNotification('error', 'Invalid Description', 'Description cannot be empty');
+        }
+      });
+      
+      // Allow Enter key to save
+      element.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.blur();
+        }
+      });
+    });
+  }
+
+  function addMenuItem(){
+    const n = document.getElementById('newItem').value.trim();
+    const p = Number(document.getElementById('newPrice').value);
+    const d = document.getElementById('newDescription').value.trim();
+    
+    if(!n || !p) {
+      showNotification('error', 'Missing Information', 'Please enter both item name and price!');
+      return;
+    }
+    
+    // Use uploaded image if available, otherwise use default pasta image
+    const imgSrc = selectedImage || "image/pasta.jpg";
+    
+    menu.push({
+      name: n,
+      price: p,
+      img: imgSrc,
+      description: d || 'Delicious pasta with rich flavors'
+    });
+    
+    // Save menu to localStorage
+    saveToStorage('menu', menu);
+    
+    renderAdminMenu();
+    
+    // Reset form and image
+    document.getElementById('newItem').value = "";
+    document.getElementById('newPrice').value = "";
+    document.getElementById('newDescription').value = "";
+    document.getElementById('imagePreview').src = "";
+    document.getElementById('imagePreview').classList.remove('active');
+    document.getElementById('imageUpload').value = "";
+    selectedImage = null;
+    
+    // If customer is logged in, update their menu view too
+    if (document.getElementById("customerView").style.display !== "none") {
+      showCustomer();
+    }
+    
+    showNotification('success', 'Menu Item Added', `${n} has been added to the menu`);
+  }
+
+  function removeItem(i){
+    const itemName = menu[i].name;
+    menu.splice(i, 1);
+    
+    // Save menu to localStorage
+    saveToStorage('menu', menu);
+    
+    renderAdminMenu();
+    
+    // If customer is logged in, update their menu view too
+    if (document.getElementById("customerView").style.display !== "none") {
+      showCustomer();
+    }
+    
+    showNotification('success', 'Menu Item Removed', `${itemName} has been removed from the menu`);
+  }
+
+  function renderUsers(){
+    const userList = document.getElementById("userList");
+    
+    // RESET: Only show the 3 main users (customer, staff, admin)
+    userList.innerHTML = `
+      <div class="user-list">
+        <div class="user-item">
+          <div class="user-info">
+            <div class="user-avatar-small">C</div>
+            <div class="user-details">
+              <h4>customer</h4>
+              <p>Role: Customer</p>
+            </div>
+          </div>
+          <div class="user-role">Customer</div>
+        </div>
+        <div class="user-item">
+          <div class="user-info">
+            <div class="user-avatar-small">S</div>
+            <div class="user-details">
+              <h4>staff</h4>
+              <p>Role: Staff</p>
+            </div>
+          </div>
+          <div class="user-role">Staff</div>
+        </div>
+        <div class="user-item">
+          <div class="user-info">
+            <div class="user-avatar-small">A</div>
+            <div class="user-details">
+              <h4>admin</h4>
+              <p>Role: Admin</p>
+            </div>
+          </div>
+          <div class="user-role">Admin</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // NEW: Show disabled users modal
+  function showDisabledUsers() {
+    const disabledUsersList = document.getElementById("disabledUsersList");
+    const disabledUsernames = Object.keys(disabledUsers);
+    
+    if (disabledUsernames.length === 0) {
+      disabledUsersList.innerHTML = `
+        <div class="empty-state">
+          <i class="fas fa-user-slash"></i>
+          <p>No disabled accounts</p>
+        </div>
+      `;
+    } else {
+      disabledUsersList.innerHTML = `
+        <div class="user-list">
+          ${disabledUsernames.map(username => `
+            <div class="user-item">
+              <div class="user-info">
+                <div class="user-avatar-small">${username.charAt(0).toUpperCase()}</div>
+                <div class="user-details">
+                  <h4>${username}</h4>
+                  <p>Disabled Account</p>
+                </div>
+              </div>
+              <button class="account-btn" onclick="enableUser('${username}')">
+                <i class="fas fa-user-check"></i> Enable
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+    
+    document.getElementById('disabledUsersModal').classList.add('active');
+  }
+
+  // NEW: Close disabled users modal
+  function closeDisabledUsersModal() {
+    document.getElementById('disabledUsersModal').classList.remove('active');
+  }
+
+  // NEW: Enable user account - FIXED TO ALLOW LOGIN AND UPDATE TOTAL USER COUNT
+  function enableUser(username) {
+    if (disabledUsers[username]) {
+      delete disabledUsers[username];
+      saveToStorage('disabledUsers', disabledUsers);
+      
+      // If it's a custom user, mark as enabled
+      if (customUsers[username]) {
+        customUsers[username].enabled = true;
+        saveToStorage('customUsers', customUsers);
+      }
+      
+      // Refresh the disabled users list
+      showDisabledUsers();
+      
+      // Update admin stats
+      updateAdminStats();
+      
+      showNotification('success', 'Account Enabled', `Account ${username} has been enabled and can now login`);
+    }
+  }
+
+  // Initialize the application
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set up e-wallet provider change listener
+    document.getElementById('ewalletProvider').addEventListener('change', updateEwalletAccountDetails);
+    
+    // Initialize payment details
+    togglePaymentDetails();
+  });
+</script>
+</body>
+</html>
